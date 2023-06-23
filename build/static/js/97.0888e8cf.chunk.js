@@ -41,10 +41,13 @@
                 e.preventDefault(),
                   console.log(o.state),
                   E.a
-                    .post("http://13.234.217.170/api/admin/adminverifyOtp", {
-                      mobile: o.state.mobile,
-                      otp: o.state.otpnumber,
-                    })
+                    .post(
+                      "http://13.234.217.170:5000/api/admin/adminverifyOtp",
+                      {
+                        mobile: o.state.mobile,
+                        otp: o.state.otpnumber,
+                      }
+                    )
                     .then(function (e) {
                       console.log(e),
                         null != e.data.token &&
@@ -72,7 +75,7 @@
                 e.preventDefault(),
                   o.setState({ otp: !1 }),
                   E.a
-                    .post("http://13.234.217.170/api/admin/adminsendotp", {
+                    .post("http://13.234.217.170:5000/api/admin/adminsendotp", {
                       mobile: o.state.mobile,
                     })
                     .then(function (e) {

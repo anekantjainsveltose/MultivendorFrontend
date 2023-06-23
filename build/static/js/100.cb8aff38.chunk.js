@@ -48,7 +48,7 @@
                   a.preventDefault(),
                     I.a
                       .post(
-                        "http://13.234.217.170/api/admin/adminfogetpassword",
+                        "http://13.234.217.170:5000/api/admin/adminfogetpassword",
                         c.state,
                         {
                           headers: {

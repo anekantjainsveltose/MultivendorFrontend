@@ -24,7 +24,7 @@ class VendorWithDraws extends React.Component {
   // componentDidMount() {
   //     let { id } = this.props.match.params;
   //     axios
-  //         .get(`http://13.234.217.170/api/user/view_onecust/${id}`)
+  //         .get(`http://13.234.217.170:5000/api/user/view_onecust/${id}`)
 
   //         .then(response => {
 

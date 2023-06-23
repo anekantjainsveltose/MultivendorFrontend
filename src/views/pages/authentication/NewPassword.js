@@ -36,11 +36,15 @@ class NewPassword extends React.Component {
   loginHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://13.234.217.170/api/admin/adminfogetpassword", this.state, {
-        headers: {
-          "auth-admintoken": localStorage.getItem("auth-admintoken"),
-        },
-      })
+      .post(
+        "http://13.234.217.170:5000/api/admin/adminfogetpassword",
+        this.state,
+        {
+          headers: {
+            "auth-admintoken": localStorage.getItem("auth-admintoken"),
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         window.localStorage.removeItem("auth-admintoken");

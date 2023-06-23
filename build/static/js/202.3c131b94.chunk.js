@@ -87,7 +87,9 @@
                   var m = s.props.match.params.id;
                   j.a
                     .post(
-                      "http://13.234.217.170/api/admin/editadmin/".concat(m),
+                      "http://13.234.217.170:5000/api/admin/editadmin/".concat(
+                        m
+                      ),
                       a
                     )
                     .then(function (e) {

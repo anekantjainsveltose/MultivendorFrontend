@@ -242,7 +242,7 @@ class SubscriberList extends React.Component {
   }
   // async componentDidMount() {
   //     await axios
-  //         .get("http://13.234.217.170/api/user/allcustomer")
+  //         .get("http://13.234.217.170:5000/api/user/allcustomer")
   //         .then((response) => {
   //             let rowData = response.data.data;
   //             console.log(rowData);
@@ -252,14 +252,14 @@ class SubscriberList extends React.Component {
   // // async componentDidMount() {
   // //   let { id } = this.props.match.params;
   // //   await axios
-  // //     .get(`/http://13.234.217.170/api/user/allcustomer/${id}`, {
+  // //     .get(`/http://13.234.217.170:5000/api/user/allcustomer/${id}`, {
   // //       headers: {
   // //         "auth-adtoken": localStorage.getItem("auth-adtoken"),
   // //       },
   // //     })}
   // async runthisfunction(id) {
   //     console.log(id);
-  //     await axios.get(`http://13.234.217.170/api/user/delcustomer/${id}`).then(
+  //     await axios.get(`http://13.234.217.170:5000/api/user/delcustomer/${id}`).then(
   //         (response) => {
   //             console.log(response);
   //         },

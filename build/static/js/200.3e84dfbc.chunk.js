@@ -87,7 +87,7 @@
                 }
                 y.a
                   .post(
-                    "http://13.234.217.170/api/admin/editadmin/61efdb313c8b8db3a3488d25",
+                    "http://13.234.217.170:5000/api/admin/editadmin/61efdb313c8b8db3a3488d25",
                     t
                   )
                   .then(function (e) {

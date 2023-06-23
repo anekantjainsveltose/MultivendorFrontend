@@ -173,7 +173,7 @@ export default class AddProducts extends Component {
     //   console.log(key);
     // }
     axiosConfig
-      .post(" http://13.234.217.170/api/admin/addproduct", data)
+      .post(" http://13.234.217.170:5000/api/admin/addproduct", data)
       .then((response) => {
         console.log(response.data);
       })

@@ -964,7 +964,7 @@
                               (e.next = 3),
                               w.a
                                 .get(
-                                  "http://13.234.217.170/api/user/delcustomer/".concat(
+                                  "http://13.234.217.170:5000/api/user/delcustomer/".concat(
                                     t
                                   )
                                 )
