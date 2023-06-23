@@ -108,7 +108,7 @@ export class EditProOrder extends Component {
         console.log(err);
       });
     // axiosConfig
-    // .get("http://13.234.217.170:5000//admin/getalldata")
+    // .get("http://13.234.217.170:5000/admin/getalldata")
     // .then((response) => {
     //   this.setState({
     //     attribuName: response.data.data,

@@ -137,7 +137,7 @@ class LanguageList extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get("http://13.234.217.170:5000//admin/language_list")
+      .get("http://13.234.217.170:5000/admin/language_list")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
@@ -147,16 +147,14 @@ class LanguageList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axios
-      .get(`http://13.234.217.170:5000//admin/del_language/${id}`)
-      .then(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    await axios.get(`http://13.234.217.170:5000/admin/del_language/${id}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   onGridReady = (params) => {
     this.gridApi = params.api;

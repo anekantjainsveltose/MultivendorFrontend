@@ -73,7 +73,7 @@ class EditProfile extends Component {
     }
     axios
       .post(
-        "http://13.234.217.170:5000//admin/adminprofile/63943f13a0a66834149781bc",
+        "http://13.234.217.170:5000/admin/adminprofile/63943f13a0a66834149781bc",
         data
       )
       .then((response) => {

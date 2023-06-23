@@ -233,7 +233,7 @@ class SubscriberList extends React.Component {
   };
   async componentDidMount() {
     await axios
-      .get("http://13.234.217.170:5000//admin/SubscrptionList")
+      .get("http://13.234.217.170:5000/admin/SubscrptionList")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
