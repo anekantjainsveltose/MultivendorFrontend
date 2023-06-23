@@ -34,7 +34,7 @@ class AnalyticsDashboard extends React.Component {
       });
 
     axios
-      .get("http://35.154.86.59/api/user/totalcustomer")
+      .get("http://13.234.217.170/api/user/totalcustomer")
       .then((response) => {
         console.log(response.data);
 

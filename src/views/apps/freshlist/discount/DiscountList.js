@@ -75,11 +75,7 @@ class DiscountList extends React.Component {
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
-          return (
-            <div>
-              {/* <span>{params.data.lastname}</span> */}
-            </div>
-          );
+          return <div>{/* <span>{params.data.lastname}</span> */}</div>;
         },
       },
       {
@@ -88,11 +84,7 @@ class DiscountList extends React.Component {
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
-          return (
-            <div>
-              {/* <span>{params.data.mobile}</span> */}
-            </div>
-          );
+          return <div>{/* <span>{params.data.mobile}</span> */}</div>;
         },
       },
       // {
@@ -208,7 +200,7 @@ class DiscountList extends React.Component {
     ],
   };
   // async componentDidMount() {
-  //     await axios.get(`http://35.154.86.59/api/user/view_onecust/${id}`)
+  //     await axios.get(`http://13.234.217.170/api/user/view_onecust/${id}`)
   //         .then((response) => {
   //             let rowData = response.data.data;
   //             console.log(rowData);
@@ -217,7 +209,7 @@ class DiscountList extends React.Component {
   // }
   // async componentDidMount() {
   //     await axios
-  //         .get("http://35.154.86.59/api/user/allcustomer")
+  //         .get("http://13.234.217.170/api/user/allcustomer")
   //         .then((response) => {
   //             let rowData = response.data.data;
   //             console.log(rowData);
@@ -227,14 +219,14 @@ class DiscountList extends React.Component {
   // async componentDidMount() {
   //   let { id } = this.props.match.params;
   //   await axios
-  //     .get(`/http://35.154.86.59/api/user/allcustomer/${id}`, {
+  //     .get(`/http://13.234.217.170/api/user/allcustomer/${id}`, {
   //       headers: {
   //         "auth-adtoken": localStorage.getItem("auth-adtoken"),
   //       },
   //     })}
   async runthisfunction(id) {
     console.log(id);
-    await axios.get(`http://35.154.86.59/api/user/delcustomer/${id}`).then(
+    await axios.get(`http://13.234.217.170/api/user/delcustomer/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -290,11 +282,14 @@ class DiscountList extends React.Component {
                     render={({ history }) => (
                       <Button
                         className=" btn btn-danger float-right"
-                        onClick={() => history.push("/app/freshlist/discount/addDiscount")}
+                        onClick={() =>
+                          history.push("/app/freshlist/discount/addDiscount")
+                        }
                       >
                         Add Discount
                       </Button>
-                    )} />
+                    )}
+                  />
                 </Col>
               </Row>
               <CardBody>
@@ -307,14 +302,14 @@ class DiscountList extends React.Component {
                             {this.gridApi
                               ? this.state.currenPageSize
                               : "" * this.state.getPageSize -
-                              (this.state.getPageSize - 1)}{" "}
+                                (this.state.getPageSize - 1)}{" "}
                             -{" "}
                             {this.state.rowData.length -
                               this.state.currenPageSize *
-                              this.state.getPageSize >
-                              0
+                                this.state.getPageSize >
+                            0
                               ? this.state.currenPageSize *
-                              this.state.getPageSize
+                                this.state.getPageSize
                               : this.state.rowData.length}{" "}
                             of {this.state.rowData.length}
                             <ChevronDown className="ml-50" size={15} />

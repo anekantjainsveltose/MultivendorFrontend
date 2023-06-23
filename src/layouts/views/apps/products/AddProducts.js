@@ -31,7 +31,7 @@ export default class AddProducts extends Component {
       material: "",
       stock_qty: "",
       stock_clearance_limit: "",
-      rate:"",
+      rate: "",
       size: "",
       colour: "",
       brand: "",
@@ -52,9 +52,8 @@ export default class AddProducts extends Component {
     };
   }
 
-componentDidMount() {
-
-//Product Category
+  componentDidMount() {
+    //Product Category
     axiosConfig
       .get("/allproductcategory")
       .then((response) => {
@@ -65,7 +64,7 @@ componentDidMount() {
         console.log(error);
       });
 
-//Product Sub Category
+    //Product Sub Category
     axiosConfig
       .get("/allproductsubcategory")
       .then((response) => {
@@ -76,7 +75,7 @@ componentDidMount() {
         console.log(error);
       });
 
-//Units
+    //Units
     axiosConfig
       .get("/viewallunits")
       .then((response) => {
@@ -87,7 +86,7 @@ componentDidMount() {
         console.log(error);
       });
 
-//Alternative Units
+    //Alternative Units
     axiosConfig
       .get("/allaltunit")
       .then((response) => {
@@ -98,7 +97,7 @@ componentDidMount() {
         console.log(error);
       });
 
-//Gst rate
+    //Gst rate
     axiosConfig
       .get("/viewallgst")
       .then((response) => {
@@ -109,7 +108,7 @@ componentDidMount() {
         console.log(error);
       });
 
-//Brand
+    //Brand
     axiosConfig
       .get("/allbrand")
       .then((response) => {
@@ -121,7 +120,7 @@ componentDidMount() {
       });
   }
 
-//Image Submit Handler
+  //Image Submit Handler
   onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
@@ -135,7 +134,7 @@ componentDidMount() {
   };
   submitHandler = (e) => {
     e.preventDefault();
-//console.log(this.state);
+    //console.log(this.state);
 
     const data = new FormData();
     data.append("item_name", this.state.item_name);
@@ -174,7 +173,7 @@ componentDidMount() {
     //   console.log(key);
     // }
     axiosConfig
-      .post(" http://35.154.86.59/api/admin/addproduct", data)
+      .post(" http://13.234.217.170/api/admin/addproduct", data)
       .then((response) => {
         console.log(response.data);
       })
@@ -209,7 +208,7 @@ componentDidMount() {
                   <Input
                     required
                     type="text"
-                    placeholder="PRODUCT ID" 
+                    placeholder="PRODUCT ID"
                     name="item_name"
                     value={this.state.item_name}
                     onChange={this.changeHandler}
@@ -495,7 +494,7 @@ componentDidMount() {
                       name="status"
                       value="Active"
                     />
-                  <span style={{ marginRight: "20px" }}>Active</span>
+                    <span style={{ marginRight: "20px" }}>Active</span>
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"

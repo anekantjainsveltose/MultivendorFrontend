@@ -26,7 +26,7 @@
 //         status: ""
 //     };
 //   }
-  
+
 //   onChangeHandler = (event) => {
 //     this.setState({ selectedFile: event.target.files[0] });
 //     this.setState({ selectedName: event.target.files[0].name });
@@ -41,10 +41,9 @@
 //   submitHandler = (e) => {
 //     e.preventDefault();
 
-
-//     axios.post("http://35.154.86.59/api/user/customersignup", this.state)
+//     axios.post("http://13.234.217.170/api/user/customersignup", this.state)
 //       .then((response) => {
-//         console.log(response);  
+//         console.log(response);
 //         alert("Customer Added Successful")
 //         this.props.history.push("/app/customer/customerList");
 //       })
@@ -52,7 +51,7 @@
 //         console.log(error);
 //       });
 //   };
-  
+
 //   render() {
 //     return (
 //       <div>
@@ -65,63 +64,63 @@
 //               <Row>
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label>first Name</Label>
-//                   <Input   
-//                     required 
-//                     type="text" 
+//                   <Input
+//                     required
+//                     type="text"
 //                     name="first_name"
-//                     placeholder="Enter First Name" 
+//                     placeholder="Enter First Name"
 //                     value={this.state.first_name}
 //                     onChange={this.changeHandler}>
 //                   </Input>
 //                 </Col>
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label>Last Name</Label>
-//                   <Input   
-//                     required 
-//                     type="text" 
+//                   <Input
+//                     required
+//                     type="text"
 //                     name="last_name"
-//                     placeholder="Enter Last Name"  
+//                     placeholder="Enter Last Name"
 //                     value={this.state.last_name}
 //                     onChange={this.changeHandler}>
-//                   </Input> 
+//                   </Input>
 //                 </Col>
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label>Customer Email</Label>
-//                   <Input  
-//                     required 
-//                     type="email" 
+//                   <Input
+//                     required
+//                     type="email"
 //                     name="customer_email"
-//                     placeholder="Email"  
+//                     placeholder="Email"
 //                     value={this.state.customer_email}
 //                     onChange={this.changeHandler} >
-//                   </Input>    
+//                   </Input>
 //                 </Col>
-             
+
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label>Mobile No.</Label>
-//                   <Input  
-//                     required 
-//                     type="number" 
+//                   <Input
+//                     required
+//                     type="number"
 //                     name="mobile_no"
-//                     placeholder="Mobile No." 
+//                     placeholder="Mobile No."
 //                     value={this.state.mobile_no}
 //                     onChange={this.changeHandler}>
-//                   </Input>    
+//                   </Input>
 //                 </Col>
 //               </Row>
 //               <Row>
 //               <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label>Short Order</Label>
-//                     <Input   
-//                       required 
-//                       type="text" 
+//                     <Input
+//                       required
+//                       type="text"
 //                       name="sortorder"
-//                       placeholder="Enter Sort Order"  
+//                       placeholder="Enter Sort Order"
 //                       value={this.state.sortorder}
 //                       onChange={this.changeHandler}>
-//                     </Input> 
+//                     </Input>
 //                 </Col>
-//             </Row> 
+//             </Row>
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Label className="mb-1">Status</Label>
 //                   <div
@@ -144,7 +143,7 @@
 //                     />
 //                     <span style={{ marginRight: "3px" }}>Inactive</span>
 //                   </div>
-//                 </Col> 
+//                 </Col>
 //               <Row>
 //                 <Col lg="6" md="6" sm="6" className="mb-2">
 //                   <Button.Ripple

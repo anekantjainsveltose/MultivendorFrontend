@@ -166,7 +166,7 @@ class HouseProductList extends React.Component {
 
   // async runthisfunction(id) {
   //     console.log(id);
-  //     await axios.get(`http://35.154.86.59/api/user/delcustomer/${id}`).then(
+  //     await axios.get(`http://13.234.217.170/api/user/delcustomer/${id}`).then(
   //         (response) => {
   //             console.log(response);
   //         },

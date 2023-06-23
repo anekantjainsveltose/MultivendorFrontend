@@ -25,23 +25,23 @@ export default class AddSpecialOffer extends Component {
       selectedName: "",
       status: "",
     };
-  this.state = {
-   allProduct1: [],
-  };
-}
-componentDidMount() {
- //All Product 
+    this.state = {
+      allProduct1: [],
+    };
+  }
+  componentDidMount() {
+    //All Product
     axiosConfig
-    .get("/getproduct")
-    .then((response) => {
-      console.log(response);
-      this.setState({ allProduct1: response.data.data });
-    })
-  .catch((error) => {
-    console.log(error);
-  });
-}
-    onChangeHandler = (event) => {
+      .get("/getproduct")
+      .then((response) => {
+        console.log(response);
+        this.setState({ allProduct1: response.data.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
@@ -62,26 +62,24 @@ componentDidMount() {
     data.append("product_qty", this.state.product_qty);
     data.append("sortorder", this.state.sortorder);
     data.append("status", this.state.status);
-    data.append(
-      "offer_img",
-      this.state.selectedFile,
-      this.state.selectedName
-    );
-      for (var value of data.values()) {
-        console.log(value);
-      }
-      for (var key of data.keys()) {
-        console.log(key);
-      }
+    data.append("offer_img", this.state.selectedFile, this.state.selectedName);
+    for (var value of data.values()) {
+      console.log(value);
+    }
+    for (var key of data.keys()) {
+      console.log(key);
+    }
     axiosConfig
-    .post("http://35.154.86.59/api/admin/add_specialoffer", data)
-    .then((response) => {
-      console.log(response.data);
-      this.props.history.push("/app/offerAndCoupon/specialOffer/specialOfferList");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .post("http://13.234.217.170/api/admin/add_specialoffer", data)
+      .then((response) => {
+        console.log(response.data);
+        this.props.history.push(
+          "/app/offerAndCoupon/specialOffer/specialOfferList"
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   render() {
     return (
@@ -97,7 +95,9 @@ componentDidMount() {
               <Button
                 className=" btn btn-danger float-right"
                 onClick={() =>
-                  history.push("/app/offerAndCoupon/specialOffer/specialOfferList")
+                  history.push(
+                    "/app/offerAndCoupon/specialOffer/specialOfferList"
+                  )
                 }
               >
                 Back
@@ -116,7 +116,7 @@ componentDidMount() {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Product</Label>
                   <CustomInput
@@ -126,10 +126,7 @@ componentDidMount() {
                     onChange={this.changeHandler}
                   >
                     {this.state.allProduct1.map((alproduct) => (
-                      <option
-                        value={alproduct._id}
-                        key={alproduct._id}
-                      >
+                      <option value={alproduct._id} key={alproduct._id}>
                         {alproduct.product_name}
                       </option>
                     ))}

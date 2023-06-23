@@ -22,7 +22,7 @@
 //     axiosConfig
 //       .get(`/view_onecust/${id}`)
 //       .then((response) => {
-      
+
 //         console.log(response.data.data);
 //         this.setState({ data: response.data.data });
 //       })
@@ -61,7 +61,7 @@
 //                             <div className="users-page-view-table">
 //                             <div className="d-flex user-info">
 //                                 <div className="user-info-title font-weight-bold">
-//                                 First Name	
+//                                 First Name
 //                                 </div>
 //                                 <div className="text-truncate">
 //                                   <span>{this.state.data.firstname	}</span>
@@ -115,12 +115,6 @@
 //   }
 // }
 
-
-
-
-
-
-
 import React from "react";
 import {
   Card,
@@ -143,24 +137,22 @@ class ViewCustomer extends React.Component {
       data: {},
     };
   }
- 
 
   componentDidMount() {
     let { id } = this.props.match.params;
     axios
-      .get(`http://35.154.86.59/api/user/view_onecust/${id}`)
-      
-      .then(response => {
-        
-         //console.log(response.data);
+      .get(`http://13.234.217.170/api/user/view_onecust/${id}`)
+
+      .then((response) => {
+        //console.log(response.data);
         console.log(response.data.data);
         this.setState({ data: response.data.data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.response);
       });
   }
- 
+
   render() {
     return (
       <React.Fragment>
@@ -173,7 +165,7 @@ class ViewCustomer extends React.Component {
                     Home
                   </BreadcrumbItem>
                   <BreadcrumbItem href="/app/customer/CustomerList" tag="a">
-                  Customer List
+                    Customer List
                   </BreadcrumbItem>
                   <BreadcrumbItem active>View Customer</BreadcrumbItem>
                 </Breadcrumb>
@@ -190,7 +182,8 @@ class ViewCustomer extends React.Component {
               <Col>
                 <Button
                   className=" btn btn-danger float-right"
-                  onClick={() => history.push("/app/customer/CustomerList")}>
+                  onClick={() => history.push("/app/customer/CustomerList")}
+                >
                   Back
                 </Button>
               </Col>
@@ -198,47 +191,47 @@ class ViewCustomer extends React.Component {
             <CardBody className="pb-0">
               <Row className="ml-4">
                 <Col sm="9" md="12" lg="12">
-                <div className="users-page-view-table"> 
-                <div className="d-flex user-info">
-                    <div className="user-info-title font-weight-bold">
-                    Customer Id 
+                  <div className="users-page-view-table">
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Customer Id
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.customerId}</span>
+                      </div>
                     </div>
-                    <div className="text-truncate">
-                      <span>{this.state.data.customerId}</span>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        First Name
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.firstname}</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="d-flex user-info">
-                    <div className="user-info-title font-weight-bold">
-                      First Name
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Last Name
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.lastname}</span>
+                      </div>
                     </div>
-                    <div className="text-truncate">
-                      <span>{this.state.data.firstname}</span>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Email
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.email}</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="d-flex user-info">
-                    <div className="user-info-title font-weight-bold">
-                      Last Name
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Mobile
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.mobile}</span>
+                      </div>
                     </div>
-                    <div className="text-truncate">
-                      <span>{this.state.data.lastname}</span>
-                    </div>
-                  </div>
-                  <div className="d-flex user-info">
-                    <div className="user-info-title font-weight-bold">
-                      Email
-                    </div>
-                    <div className="text-truncate">
-                      <span>{this.state.data.email}</span>
-                    </div>
-                  </div>
-                  <div className="d-flex user-info">
-                    <div className="user-info-title font-weight-bold">
-                      Mobile
-                    </div>
-                    <div className="text-truncate">
-                      <span>{this.state.data.mobile}</span>
-                    </div>
-                  </div>
                   </div>
                 </Col>
               </Row>

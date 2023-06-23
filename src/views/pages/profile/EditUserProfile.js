@@ -14,7 +14,7 @@ import axios from "axios";
 import { history } from "../../../history";
 
 class EditProfile extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       name: "",
@@ -66,7 +66,7 @@ class EditProfile extends Component {
     }
     let { id } = this.props.match.params;
     axios
-      .post(`http://35.154.86.59/api/admin/editadmin/${id}`, data)
+      .post(`http://13.234.217.170/api/admin/editadmin/${id}`, data)
       .then((response) => {
         console.log(response.data);
       })
@@ -225,13 +225,15 @@ class EditProfile extends Component {
                         color="danger"
                         className="mr-1 mb-1 btn-danger-rgba"
                         type="reset"
-                        value="Reset">
+                        value="Reset"
+                      >
                         Reset
                       </Button.Ripple>
                       <Button.Ripple
                         color="primary"
                         type="submit"
-                        className="mr-1 mb-1">
+                        className="mr-1 mb-1"
+                      >
                         Update
                       </Button.Ripple>
                     </Col>
@@ -247,4 +249,4 @@ class EditProfile extends Component {
     );
   }
 }
-export default EditProfile
+export default EditProfile;

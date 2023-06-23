@@ -51,7 +51,7 @@ class AllUsers extends React.Component {
             <div className="d-flex align-items-center cursor-pointer">
               <img
                 className="rounded-circle"
-                src={params.data.userImage	}
+                src={params.data.userImage}
                 alt="user"
                 height="60"
                 width="60"
@@ -81,7 +81,7 @@ class AllUsers extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.user_email	}</span>
+              <span>{params.data.user_email}</span>
             </div>
           );
         },
@@ -191,19 +191,17 @@ class AllUsers extends React.Component {
 
   async componentDidMount() {
     await axios
-    .get("http://35.154.86.59/api/user/alluser")
-    .then((response) => {
+      .get("http://13.234.217.170/api/user/alluser")
+      .then((response) => {
         let rowData = response.data.data;
         this.setState({ rowData });
       });
   }
 
-
-
   async runthisfunction(id) {
     console.log(id);
-    await 
-    axios.get(`http://35.154.86.59/api/user/deleteuser/${id}`)
+    await axios
+      .get(`http://13.234.217.170/api/user/deleteuser/${id}`)
       .then((response) => {
         console.log(response);
       });
@@ -237,9 +235,7 @@ class AllUsers extends React.Component {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <Row className="app-user-list">
-        <Col sm="12">
-          
-        </Col>
+        <Col sm="12"></Col>
         <Col sm="12">
           <Card>
             <Row className="m-2">

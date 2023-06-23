@@ -35,7 +35,7 @@ class ForgotPassword extends React.Component {
     console.log(this.state);
 
     axios
-      .post("http://35.154.86.59/api/admin/adminverifyOtp", {
+      .post("http://13.234.217.170/api/admin/adminverifyOtp", {
         mobile: this.state.mobile,
         otp: this.state.otpnumber,
       })
@@ -71,7 +71,7 @@ class ForgotPassword extends React.Component {
 
     this.setState({ otp: false });
     axios
-      .post(`http://35.154.86.59/api/admin/adminsendotp`, {
+      .post(`http://13.234.217.170/api/admin/adminsendotp`, {
         mobile: this.state.mobile,
       })
       .then((response) => {
