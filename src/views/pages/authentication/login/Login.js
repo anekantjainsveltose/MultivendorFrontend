@@ -77,7 +77,12 @@ class Login extends React.Component {
                 <Col lg="12" md="12" className="p-1">
                   <Card className="rounded-0 mb-0 px-2 login-tabs-container">
                     <div className="logo-box text-center p-1">
-                      <img src={logo} alt="loginImg" width="150" />
+                      <img
+                        src={logo}
+                        alt="loginImg"
+                        width="250"
+                        style={{ filter: "invert(100%)" }}
+                      />
                     </div>
                     <CardHeader className="pb-1">
                       <CardTitle>
