@@ -148,7 +148,7 @@ class CustomSetupRole extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get("http://3.6.37.16:8000/admin/getall_drive")
+      .get("http://13.234.217.170:5000//admin/getall_drive")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);

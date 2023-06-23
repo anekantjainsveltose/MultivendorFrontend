@@ -47,7 +47,7 @@ class AnalyticsDashboard extends React.Component {
     //     console.log(error);
     //   });
     // axios
-    //   .get("http://3.6.37.16:8000/admin/product_list")
+    //   .get("http://13.234.217.170:5000//admin/product_list")
     //   .then((response) => {
     //     console.log(response.data);
     //     this.setState({ customer: response.data });

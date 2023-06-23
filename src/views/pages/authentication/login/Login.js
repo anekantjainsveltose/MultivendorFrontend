@@ -45,7 +45,7 @@ class Login extends React.Component {
     console.log(this.state.email);
     console.log(this.state.password);
     axios
-      .post("http://3.6.37.16:8000/admin/adminlogin", this.state)
+      .post("http://13.234.217.170:5000//admin/adminlogin", this.state)
       .then((response) => {
         swal("Successful!", "You clicked the button!", "success");
         console.log(response.data.user);

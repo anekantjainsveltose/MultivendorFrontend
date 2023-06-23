@@ -46,7 +46,7 @@ class LanguageList extends React.Component {
         field: "image",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <img
@@ -65,7 +65,7 @@ class LanguageList extends React.Component {
         field: "lang_name",
         filter: true,
         width: 200,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.lang_name}</span>
@@ -96,7 +96,7 @@ class LanguageList extends React.Component {
         field: "sortorder",
         field: "transactions",
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
               <Route
@@ -137,8 +137,8 @@ class LanguageList extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get("http://3.6.37.16:8000/admin/language_list")
-      .then(response => {
+      .get("http://13.234.217.170:5000//admin/language_list")
+      .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
         this.setState({ rowData });
@@ -147,16 +147,18 @@ class LanguageList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axios.get(`http://3.6.37.16:8000/admin/del_language/${id}`).then(
-      response => {
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    await axios
+      .get(`http://13.234.217.170:5000//admin/del_language/${id}`)
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
-  onGridReady = params => {
+  onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.setState({
@@ -165,10 +167,10 @@ class LanguageList extends React.Component {
       totalPages: this.gridApi.paginationGetTotalPages(),
     });
   };
-  updateSearchQuery = val => {
+  updateSearchQuery = (val) => {
     this.gridApi.setQuickFilter(val);
   };
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
       this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
@@ -262,7 +264,7 @@ class LanguageList extends React.Component {
                         <div className="table-input mr-1">
                           <Input
                             placeholder="search..."
-                            onChange={e =>
+                            onChange={(e) =>
                               this.updateSearchQuery(e.target.value)
                             }
                             value={this.state.value}
@@ -279,7 +281,7 @@ class LanguageList extends React.Component {
                       </div>
                     </div>
                     <ContextLayout.Consumer>
-                      {context => (
+                      {(context) => (
                         <AgGridReact
                           gridOptions={{}}
                           rowSelection="multiple"

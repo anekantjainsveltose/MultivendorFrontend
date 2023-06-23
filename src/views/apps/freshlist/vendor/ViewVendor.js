@@ -26,12 +26,12 @@ class ViewVendor extends React.Component {
   componentDidMount() {
     let { id } = this.props.match.params;
     console.log("vendor id ", id);
-    Axios.get(`http://3.6.37.16:8000/app/vender_getviewone/${id}`)
-      .then(response => {
+    Axios.get(`http://13.234.217.170:5000//app/vender_getviewone/${id}`)
+      .then((response) => {
         console.log(response.data.data);
         this.setState({ data: response.data.data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.response.data);
       });
   }
