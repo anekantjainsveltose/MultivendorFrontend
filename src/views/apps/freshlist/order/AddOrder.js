@@ -6,6 +6,7 @@ import Products from "./EditOrder/Products";
 import PaymentDetails from "./EditOrder/PaymentDetails";
 import ShippingDetails from "./EditOrder/ShippingDetails";
 import Totals from "./EditOrder/Totals";
+
 function AddOrder() {
   return (
     <div>

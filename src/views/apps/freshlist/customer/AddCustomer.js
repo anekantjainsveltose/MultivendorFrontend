@@ -17,15 +17,10 @@ import { Route } from "react-router-dom";
 
 const AddCustomer = () => {
   const [formData, setFormData] = useState({
-    hub_name: "",
-    desc: "",
+    name: "",
     email: "",
-    phone: "",
-    address: "",
-    d_zone: "",
-    cat: "",
-    subcat: "",
     status: "",
+    mobile: "",
   });
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,10 +31,10 @@ const AddCustomer = () => {
     console.log("submitHandler", formData);
 
     axiosConfig
-      .post("/admin/addcategory", formData)
+      .post("/admin/addCustomer", formData)
       .then((response) => {
+        history.push("/app/freshlist/customer/customerList");
         console.log(response);
-        this.props.history.push("/app/freshlist/order/orderList");
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +74,7 @@ const AddCustomer = () => {
                   <Input
                     type="text"
                     placeholder="Customer_Name"
-                    name="customer_name"
+                    name="name"
                     value={formData.customer_name}
                     onChange={changeHandler}
                   />
@@ -103,7 +98,7 @@ const AddCustomer = () => {
                   <Input
                     type="Number"
                     placeholder="Enter No."
-                    name="phone"
+                    name="mobile"
                     value={formData.phone}
                     onChange={changeHandler}
                   />

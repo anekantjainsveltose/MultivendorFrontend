@@ -8,7 +8,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../../assets/scss/plugins/extensions/editor.scss";
 import axiosConfig from "../../../axiosConfig";
 import { history } from "../../../history";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 class AddPolicy extends React.Component {
   constructor(props) {
@@ -33,13 +33,12 @@ class AddPolicy extends React.Component {
     // data.append("description", this.state.description);
 
     axiosConfig
-      .post("/addprivacy_policy", this.state)
+      .post("/admin/addprivacy_policy", this.state)
       .then((response) => {
         console.log(response);
         this.props.history.push("/app/privacyPolicy/privacyPolicy");
         // alert("Privacy Policy Added Successfully !");
         swal("Good job!", "You clicked the button!", "success");
-
       })
       .catch((error) => {
         console.log(error);
@@ -60,8 +59,7 @@ class AddPolicy extends React.Component {
           <Col>
             <Button
               className=" btn btn-danger float-right"
-              onClick={() =>history.push("/app/privacyPolicy/privacyPolicy")
-              }
+              onClick={() => history.push("/app/privacyPolicy/privacyPolicy")}
             >
               Back
             </Button>
@@ -102,7 +100,7 @@ class AddPolicy extends React.Component {
                 },
               }}
             />
-            <br/>
+            <br />
             <Button color="primary">Add New Policy</Button>
           </Form>
         </CardBody>

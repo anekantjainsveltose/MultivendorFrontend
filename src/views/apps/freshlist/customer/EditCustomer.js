@@ -33,15 +33,15 @@ class EditCustomer extends React.Component {
     };
   }
 
-  onChangeHandler = event => {
+  onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ status: e.target.value });
   };
 
@@ -49,8 +49,8 @@ class EditCustomer extends React.Component {
     // console.log(this.props.match.params);
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/user/getviewone/${id}`)
-      .then(response => {
+      .get(`/user/view_one_customer/${id}`)
+      .then((response) => {
         console.log(response.data.data);
         this.setState({
           data: response.data.data,
@@ -59,12 +59,12 @@ class EditCustomer extends React.Component {
           phone: response.data.data.mobile,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     console.log(this.props.match.params, this.state);
     const data = new FormData();
@@ -80,12 +80,12 @@ class EditCustomer extends React.Component {
     }
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/user/edituser/${id}`, data)
-      .then(response => {
+      .post(`/user/edit_customer/${id}`, data)
+      .then((response) => {
         console.log(response);
-        this.props.history.push("/app/freshlist/customer/editCustomer");
+        this.props.history.push("/app/freshlist/customer/customerList");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

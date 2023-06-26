@@ -81,7 +81,7 @@ class Gallery extends Component {
     }
     axios
       .post(
-        "http://13.234.217.170:5000/api/admin/editadmin/61efdb313c8b8db3a3488d25",
+        "http://35.154.225.110:5000/api/admin/editadmin/61efdb313c8b8db3a3488d25",
         data
       )
       .then((response) => {

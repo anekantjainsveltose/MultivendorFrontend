@@ -191,7 +191,7 @@ class AllUsers extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get("http://13.234.217.170:5000/api/user/alluser")
+      .get("http://35.154.225.110:5000/api/user/alluser")
       .then((response) => {
         let rowData = response.data.data;
         this.setState({ rowData });
@@ -201,7 +201,7 @@ class AllUsers extends React.Component {
   async runthisfunction(id) {
     console.log(id);
     await axios
-      .get(`http://13.234.217.170:5000/api/user/deleteuser/${id}`)
+      .get(`http://35.154.225.110:5000/api/user/deleteuser/${id}`)
       .then((response) => {
         console.log(response);
       });

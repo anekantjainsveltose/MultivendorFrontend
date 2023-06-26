@@ -29,7 +29,7 @@ class AddTAndC extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     axiosConfig
-      .post("/addTermscondition", this.state)
+      .post("/admin/addterm_condition", this.state)
       .then((response) => {
         console.log(response);
         this.props.history.push("/app/termsAndCondition/tAndCList");

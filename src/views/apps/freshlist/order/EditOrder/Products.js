@@ -21,6 +21,7 @@ import axiosConfig from "../../../../../axiosConfig";
 import { Tabs, Tab } from "react-bootstrap-tabs";
 import { Container } from "reactstrap";
 import { Variant } from "./Products/Variant";
+
 export class Products extends Component {
   constructor(props) {
     super(props);

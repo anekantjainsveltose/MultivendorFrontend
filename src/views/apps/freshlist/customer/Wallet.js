@@ -201,7 +201,7 @@ class Wallet extends React.Component {
     ],
   };
   // async componentDidMount() {
-  //     await axios.get(`http://13.234.217.170:5000/api/user/view_onecust/${id}`)
+  //     await axios.get(`http://35.154.225.110:5000/api/user/view_onecust/${id}`)
   //         .then((response) => {
   //             let rowData = response.data.data;
   //             console.log(rowData);
@@ -210,7 +210,7 @@ class Wallet extends React.Component {
   // }
   // async componentDidMount() {
   //     await axios
-  //         .get("http://13.234.217.170:5000/api/user/allcustomer")
+  //         .get("http://35.154.225.110:5000/api/user/allcustomer")
   //         .then((response) => {
   //             let rowData = response.data.data;
   //             console.log(rowData);
@@ -220,7 +220,7 @@ class Wallet extends React.Component {
   // async componentDidMount() {
   //   let { id } = this.props.match.params;
   //   await axios
-  //     .get(`/http://13.234.217.170:5000/api/user/allcustomer/${id}`, {
+  //     .get(`/http://35.154.225.110:5000/api/user/allcustomer/${id}`, {
   //       headers: {
   //         "auth-adtoken": localStorage.getItem("auth-adtoken"),
   //       },
@@ -228,7 +228,7 @@ class Wallet extends React.Component {
   async runthisfunction(id) {
     console.log(id);
     await axios
-      .get(`http://13.234.217.170:5000/api/user/delcustomer/${id}`)
+      .get(`http://35.154.225.110:5000/api/user/delcustomer/${id}`)
       .then(
         (response) => {
           console.log(response);

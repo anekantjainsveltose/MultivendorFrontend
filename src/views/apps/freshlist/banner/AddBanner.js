@@ -13,9 +13,10 @@ import {
   Button,
 } from "reactstrap";
 import axiosConfig from "../../../../axiosConfig";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+
 export default class AddBanner extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       banner_title: "",
@@ -23,7 +24,7 @@ export default class AddBanner extends Component {
       bannertype: "",
       selectedFile: undefined,
       selectedName: "",
-      status: ""
+      status: "",
     };
   }
   onChangeHandler = (event) => {
@@ -59,7 +60,8 @@ export default class AddBanner extends Component {
     for (var key of data.keys()) {
       console.log(key);
     }
-    axiosConfig.post("/addbanner", data)
+    axiosConfig
+      .post("/admin/add_banner", data)
       .then((response) => {
         console.log(response);
         swal("Successful!", "You clicked the button!", "success");
@@ -87,7 +89,8 @@ export default class AddBanner extends Component {
                     name="banner_title"
                     placeholder="Enter Banner URL"
                     value={this.state.banner_title}
-                    onChange={this.changeHandler} />
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Banner Title</Label>
@@ -97,14 +100,16 @@ export default class AddBanner extends Component {
                     name="banner_title"
                     placeholder="Enter Banner Title"
                     value={this.state.banner_title}
-                    onChange={this.changeHandler} />
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Banner image</Label>
                   <CustomInput
                     type="file"
                     multiple
-                    onChange={this.onChangeHandler} />
+                    onChange={this.onChangeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Banner Type</Label>
@@ -114,7 +119,8 @@ export default class AddBanner extends Component {
                     name="bannertype"
                     placeholder="Enter Banner Type"
                     value={this.state.bannertype}
-                    onChange={this.changeHandler}>
+                    onChange={this.changeHandler}
+                  >
                     <option value="select">--Select--</option>
                     <option value="AB">AB</option>
                     <option value="PV">PV</option>
@@ -148,7 +154,8 @@ export default class AddBanner extends Component {
                   <Button.Ripple
                     color="primary"
                     type="submit"
-                    className="mr-1 mb-1">
+                    className="mr-1 mb-1"
+                  >
                     Add Banner
                   </Button.Ripple>
                 </Col>

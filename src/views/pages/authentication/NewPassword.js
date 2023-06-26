@@ -37,7 +37,7 @@ class NewPassword extends React.Component {
     e.preventDefault();
     axios
       .post(
-        "http://13.234.217.170:5000/api/admin/adminfogetpassword",
+        "http://35.154.225.110:5000/api/admin/adminfogetpassword",
         this.state,
         {
           headers: {

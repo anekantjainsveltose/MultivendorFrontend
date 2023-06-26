@@ -37,7 +37,6 @@ class TAndCList extends React.Component {
       suppressMenu: true,
     },
     columnDefs: [
-    
       {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
@@ -48,7 +47,7 @@ class TAndCList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-   
+
       {
         headerName: " T&C Description",
         field: "description",
@@ -58,10 +57,10 @@ class TAndCList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-            <div className="">
-              <span>{ReactHtmlParser(params.data.description)}</span>
+              <div className="">
+                <span>{ReactHtmlParser(params.data.description)}</span>
+              </div>
             </div>
-          </div>
           );
         },
       },
@@ -91,7 +90,7 @@ class TAndCList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/gettermsconditions").then((response) => {
+    await axiosConfig.get("/admin/getall_term_condition").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
@@ -99,12 +98,13 @@ class TAndCList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deltermcondition/${id}`).then((response) => {
-      console.log(response);
-    });
+    await axiosConfig
+      .get(`/admin/del_term_condition/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
   }
 
- 
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -132,9 +132,7 @@ class TAndCList extends React.Component {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <Row className="app-user-list">
-        <Col sm="12">
-          
-        </Col>
+        <Col sm="12"></Col>
         <Col sm="12">
           <Card>
             <Row className="m-2">

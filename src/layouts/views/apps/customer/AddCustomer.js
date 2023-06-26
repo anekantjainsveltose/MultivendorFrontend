@@ -41,7 +41,7 @@
 //   submitHandler = (e) => {
 //     e.preventDefault();
 
-//     axios.post("http://13.234.217.170:5000/api/user/customersignup", this.state)
+//     axios.post("http://35.154.225.110:5000/api/user/customersignup", this.state)
 //       .then((response) => {
 //         console.log(response);
 //         alert("Customer Added Successful")

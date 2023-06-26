@@ -156,7 +156,7 @@ class HouseProductList extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get("http://13.234.217.170:5000/admin/product_list")
+      .get("http://35.154.225.110:5000/admin/product_list")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
@@ -166,7 +166,7 @@ class HouseProductList extends React.Component {
 
   // async runthisfunction(id) {
   //     console.log(id);
-  //     await axios.get(`http://13.234.217.170:5000/api/user/delcustomer/${id}`).then(
+  //     await axios.get(`http://35.154.225.110:5000/api/user/delcustomer/${id}`).then(
   //         (response) => {
   //             console.log(response);
   //         },

@@ -90,7 +90,7 @@ class TAndCList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/gettermsconditions").then((response) => {
+    await axiosConfig.get("/admin/getall_term_condition").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
@@ -98,9 +98,11 @@ class TAndCList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deltermcondition/${id}`).then((response) => {
-      console.log(response);
-    });
+    await axiosConfig
+      .delete(`/admin/del_term_condition/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   onGridReady = (params) => {

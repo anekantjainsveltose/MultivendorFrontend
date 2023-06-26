@@ -12,6 +12,7 @@ import Banner from "./productData/Banner";
 import Videos from "./productData/Videos";
 import RewardPoints from "./productData/RewardPoints";
 import Seo from "./productData/Seo";
+
 function AddHouseProduct() {
   return (
     <div>

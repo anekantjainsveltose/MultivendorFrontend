@@ -53,7 +53,7 @@ class CustomerList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.username}</span>
+              <span>{params.data.name}</span>
             </div>
           );
         },
@@ -169,7 +169,7 @@ class CustomerList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/user/userlist").then((response) => {
+    await axiosConfig.get("/admin/customersList").then((response) => {
       let rowData = response.data.data;
       // console.log("CustomerList", response);
       this.setState({ rowData });
@@ -177,14 +177,16 @@ class CustomerList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axios.delete(`/user/dlt_user/${id}`).then(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    await axios
+      .delete(`http://35.154.225.110:5000/admin/delete_customer/${id}`)
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
   onGridReady = (params) => {
     this.gridApi = params.api;

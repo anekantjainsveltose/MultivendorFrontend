@@ -140,7 +140,7 @@ class FeatureDeal extends React.Component {
   }
   async componentDidMount() {
     await axios
-      .get("http://13.234.217.170:5000/api/user/allcustomer")
+      .get("http://35.154.225.110:5000/api/user/allcustomer")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);

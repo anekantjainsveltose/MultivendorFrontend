@@ -70,7 +70,7 @@ export default class AddSpecialOffer extends Component {
       console.log(key);
     }
     axiosConfig
-      .post("http://13.234.217.170:5000/api/admin/add_specialoffer", data)
+      .post("http://35.154.225.110:5000/api/admin/add_specialoffer", data)
       .then((response) => {
         console.log(response.data);
         this.props.history.push(

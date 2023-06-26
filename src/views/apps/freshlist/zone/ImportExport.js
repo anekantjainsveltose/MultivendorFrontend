@@ -37,7 +37,7 @@ class ImportExport extends React.Component {
       });
 
     axios
-      .get("http://13.234.217.170:5000/api/user/totalcustomer")
+      .get("http://35.154.225.110:5000/api/user/totalcustomer")
       .then((response) => {
         console.log(response.data);
 

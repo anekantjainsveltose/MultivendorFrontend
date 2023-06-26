@@ -97,9 +97,9 @@ class PrivacyPolicy extends React.Component {
             }
           /> */}
               <Trash2
-               className="mr-50"
-               size="25px"
-               color="red"
+                className="mr-50"
+                size="25px"
+                color="red"
                 onClick={() => {
                   let selectedData = this.gridApi.getSelectedRows();
                   this.runthisfunction(params.data._id);
@@ -163,7 +163,7 @@ class PrivacyPolicy extends React.Component {
                   Privacy Policy List
                 </h1>
               </Col>
-              <Col> 
+              <Col>
                 <Button
                   className=" btn btn-danger float-right"
                   onClick={() => history.push("/app/privacyPolicy/addPolicy")}
