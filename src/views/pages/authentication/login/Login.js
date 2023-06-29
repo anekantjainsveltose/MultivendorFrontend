@@ -81,7 +81,7 @@ class Login extends React.Component {
                         src={logo}
                         alt="loginImg"
                         width="250"
-                        style={{ filter: "invert(100%)" }}
+                        style={{ mixBlendMode: "multiply" }}
                       />
                     </div>
                     <CardHeader className="pb-1">

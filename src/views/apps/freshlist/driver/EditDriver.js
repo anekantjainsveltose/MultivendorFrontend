@@ -43,38 +43,38 @@ export class EditDriver extends Component {
       selectedName6: "",
     };
   }
-  onChangeHandler1 = event => {
+  onChangeHandler1 = (event) => {
     this.setState({ selectedFile1: event.target.files[0] });
     this.setState({ selectedName1: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler2 = event => {
+  onChangeHandler2 = (event) => {
     this.setState({ selectedFile2: event.target.files[0] });
     this.setState({ selectedName2: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler3 = event => {
+  onChangeHandler3 = (event) => {
     this.setState({ selectedFile3: event.target.files[0] });
     this.setState({ selectedName3: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler4 = event => {
+  onChangeHandler4 = (event) => {
     this.setState({ selectedFile4: event.target.files[0] });
     this.setState({ selectedName4: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler5 = event => {
+  onChangeHandler5 = (event) => {
     this.setState({ selectedFile5: event.target.files[0] });
     this.setState({ selectedName5: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler6 = event => {
+  onChangeHandler6 = (event) => {
     this.setState({ selectedFile6: event.target.files[0] });
     this.setState({ selectedName6: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
 
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -82,7 +82,7 @@ export class EditDriver extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .get(`/admin/viewone_drive/${id}`)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         this.setState({
           data: response.data.data,
@@ -95,12 +95,12 @@ export class EditDriver extends Component {
           password: response.data.data.password,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("firstname", this.state.firstname);
@@ -161,14 +161,14 @@ export class EditDriver extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .post(`/admin/edit_drive/${id}`, data)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         if (response.data.msg == "success") {
           swal("Success!", "Submitted Successfully", "success");
           this.props.history.push("/app/freshlist/driver/driverList");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.response.data);
       });
   };

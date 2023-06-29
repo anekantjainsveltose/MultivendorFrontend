@@ -25,16 +25,16 @@ export class AddLanguage extends Component {
     };
   }
 
-  onChangeHandler = event => {
+  onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
 
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("lang_name", this.state.name);
@@ -46,11 +46,11 @@ export class AddLanguage extends Component {
     //  }
     axiosConfig
       .post("/admin/add_language", data)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.props.history.push("/app/freshlist/language/languageList");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

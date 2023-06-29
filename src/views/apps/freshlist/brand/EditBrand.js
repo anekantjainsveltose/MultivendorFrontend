@@ -28,16 +28,16 @@ export class EditBrand extends Component {
     };
   }
 
-  onChangeHandler = event => {
+  onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ status: e.target.value });
   };
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -46,7 +46,7 @@ export class EditBrand extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .get(`/admin/viewone_brand/${id}`)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         this.setState({
           data: response.data.data,
@@ -55,12 +55,12 @@ export class EditBrand extends Component {
           status: response.data.data.status,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("brand_name", this.state.name);
@@ -75,11 +75,11 @@ export class EditBrand extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .post(`/admin/edit_brand/${id}`, data)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.props.history.push("/app/freshlist/brand/brandList");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

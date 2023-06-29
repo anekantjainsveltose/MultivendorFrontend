@@ -52,7 +52,7 @@ class VendorList extends React.Component {
         //filter: true,
         filter: "agSetColumnFilter",
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <div className="">
@@ -67,7 +67,7 @@ class VendorList extends React.Component {
         field: "mobile",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.mobile}</span>
@@ -80,7 +80,7 @@ class VendorList extends React.Component {
         field: "doorNo",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.door_number}</span>
@@ -93,7 +93,7 @@ class VendorList extends React.Component {
         field: "street",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.street}</span>
@@ -106,7 +106,7 @@ class VendorList extends React.Component {
         field: "location",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.location}</span>
@@ -119,7 +119,7 @@ class VendorList extends React.Component {
         field: "city",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.city}</span>
@@ -132,7 +132,7 @@ class VendorList extends React.Component {
         field: "pincode",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params?.data?.pincode}</span>
@@ -145,7 +145,7 @@ class VendorList extends React.Component {
         field: "vendoor_img",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <img
@@ -165,7 +165,7 @@ class VendorList extends React.Component {
         field: "status",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
               {params?.data?.status}
@@ -181,7 +181,7 @@ class VendorList extends React.Component {
         headerName: "Actions",
         field: "Actions",
         width: 180,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <Route
@@ -232,7 +232,7 @@ class VendorList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/app/vender_getlist").then(response => {
+    await axiosConfig.get("/app/vender_getlist").then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -241,12 +241,12 @@ class VendorList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deleteproductcategory/${id}`).then(response => {
+    await axiosConfig.get(`/deleteproductcategory/${id}`).then((response) => {
       console.log(response);
     });
   }
 
-  onGridReady = params => {
+  onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.setState({
@@ -256,11 +256,11 @@ class VendorList extends React.Component {
     });
   };
 
-  updateSearchQuery = val => {
+  updateSearchQuery = (val) => {
     this.gridApi.setQuickFilter(val);
   };
 
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
       this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
@@ -354,7 +354,7 @@ class VendorList extends React.Component {
                         <div className="table-input mr-1">
                           <Input
                             placeholder="search..."
-                            onChange={e =>
+                            onChange={(e) =>
                               this.updateSearchQuery(e.target.value)
                             }
                             value={this.state.value}
@@ -371,7 +371,7 @@ class VendorList extends React.Component {
                       </div>
                     </div>
                     <ContextLayout.Consumer>
-                      {context => (
+                      {(context) => (
                         <AgGridReact
                           gridOptions={{}}
                           rowSelection="multiple"

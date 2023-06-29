@@ -190,9 +190,7 @@ class FlashSale extends React.Component {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <Row className="app-user-list">
-        <Col sm="12">
-
-        </Col>
+        <Col sm="12"></Col>
         <Col sm="12">
           <Card>
             <Row className="m-2">
@@ -202,14 +200,17 @@ class FlashSale extends React.Component {
                 </h1>
               </Col>
               <Col>
-                <Route render={({ history }) => (
-                  <Button
-                    className="btn btn-danger float-right"
-                    onClick={() => history.push("/app/freshlist/flashSale/addFlashSale")}
-                  >
-                    Add Product
-                  </Button>
-                )}
+                <Route
+                  render={({ history }) => (
+                    <Button
+                      className="btn btn-danger float-right"
+                      onClick={() =>
+                        history.push("/app/freshlist/flashSale/addFlashSale")
+                      }
+                    >
+                      Add Product
+                    </Button>
+                  )}
                 />
               </Col>
             </Row>
@@ -223,11 +224,11 @@ class FlashSale extends React.Component {
                           {this.gridApi
                             ? this.state.currenPageSize
                             : "" * this.state.getPageSize -
-                            (this.state.getPageSize - 1)}{" "}
+                              (this.state.getPageSize - 1)}{" "}
                           -{" "}
                           {this.state.rowData.length -
                             this.state.currenPageSize * this.state.getPageSize >
-                            0
+                          0
                             ? this.state.currenPageSize * this.state.getPageSize
                             : this.state.rowData.length}{" "}
                           of {this.state.rowData.length}

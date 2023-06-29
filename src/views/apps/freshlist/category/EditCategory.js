@@ -36,31 +36,31 @@ export class EditCategory extends Component {
     };
   }
 
-  onChangeHandler1 = event => {
+  onChangeHandler1 = (event) => {
     this.setState({ selectedFile1: event.target.files[0] });
     this.setState({ selectedName1: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler2 = event => {
+  onChangeHandler2 = (event) => {
     this.setState({ selectedFile2: event.target.files[0] });
     this.setState({ selectedName2: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler3 = event => {
+  onChangeHandler3 = (event) => {
     this.setState({ selectedFile3: event.target.files[0] });
     this.setState({ selectedName3: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-  onChangeHandler4 = event => {
+  onChangeHandler4 = (event) => {
     this.setState({ selectedFile4: event.target.files[0] });
     this.setState({ selectedName4: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
 
-  changeHandler1 = e => {
+  changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -68,7 +68,7 @@ export class EditCategory extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .get(`/admin/viewonecategory/${id}`)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         this.setState({
           data: response.data.data,
@@ -78,12 +78,12 @@ export class EditCategory extends Component {
           status: response.data.data.status,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("category_name", this.state.category_name);
@@ -123,14 +123,14 @@ export class EditCategory extends Component {
     console.log(id);
     axiosConfig
       .post(`/admin/edit_category/${id}`, data)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         if (response.data.msg === "success") {
           swal("Success!", "You Data IS been Submitted", "success");
           this.props.history.push("/app/freshlist/category/categoryList");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

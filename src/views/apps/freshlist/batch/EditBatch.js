@@ -33,7 +33,7 @@ export class EditBatch extends Component {
   // handleChange = e => {
   //   this.setState({ status: e.target.value });
   // };
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -42,7 +42,7 @@ export class EditBatch extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .get(`/admin/viewone_addbatch/${id}`)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         this.setState({
           data: response.data.data,
@@ -54,21 +54,21 @@ export class EditBatch extends Component {
           notify: response.data.data.notify,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
     let { id } = this.props.match.params;
     axiosConfig
       .post(`/admin/edit_batch/${id}`, this.state)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.props.history.push("/app/freshlist/batch/batchList");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

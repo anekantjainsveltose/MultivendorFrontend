@@ -48,7 +48,7 @@ class BatchList extends React.Component {
         field: "batch",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.batch}</span>
@@ -61,7 +61,7 @@ class BatchList extends React.Component {
         field: "rack_no",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.rack_no}</span>
@@ -74,7 +74,7 @@ class BatchList extends React.Component {
         field: "shelf_life",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.shelf_life}</span>
@@ -87,7 +87,7 @@ class BatchList extends React.Component {
         field: "expiry_date",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.expiry_date}</span>
@@ -100,7 +100,7 @@ class BatchList extends React.Component {
         field: "stock",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data?.stock}</span>
@@ -113,7 +113,7 @@ class BatchList extends React.Component {
         field: "notify",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div>
               <span>{params.data.notify}</span>
@@ -126,7 +126,7 @@ class BatchList extends React.Component {
         field: "status",
         filter: true,
         width: 100,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
@@ -144,7 +144,7 @@ class BatchList extends React.Component {
         // eslint-disable-next-line no-dupe-keys
         field: "transactions",
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
               <Route
@@ -191,7 +191,7 @@ class BatchList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get(`/admin/getall_batch`).then(response => {
+    await axiosConfig.get(`/admin/getall_batch`).then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -201,16 +201,16 @@ class BatchList extends React.Component {
   async runthisfunction(id) {
     console.log(id);
     await axiosConfig.delete(`/admin/viewone_addbatch/${id}`).then(
-      response => {
+      (response) => {
         console.log(response);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   }
 
-  onGridReady = params => {
+  onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.setState({
@@ -219,10 +219,10 @@ class BatchList extends React.Component {
       totalPages: this.gridApi.paginationGetTotalPages(),
     });
   };
-  updateSearchQuery = val => {
+  updateSearchQuery = (val) => {
     this.gridApi.setQuickFilter(val);
   };
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
       this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
@@ -316,7 +316,7 @@ class BatchList extends React.Component {
                         <div className="table-input mr-1">
                           <Input
                             placeholder="search..."
-                            onChange={e =>
+                            onChange={(e) =>
                               this.updateSearchQuery(e.target.value)
                             }
                             value={this.state.value}
@@ -333,7 +333,7 @@ class BatchList extends React.Component {
                       </div>
                     </div>
                     <ContextLayout.Consumer>
-                      {context => (
+                      {(context) => (
                         <AgGridReact
                           gridOptions={{}}
                           rowSelection="multiple"

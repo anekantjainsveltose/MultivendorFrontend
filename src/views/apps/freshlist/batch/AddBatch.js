@@ -33,19 +33,19 @@ export class AddBatch extends Component {
   // handleChange = e => {
   //   this.setState({ status: e.target.value });
   // };
-  changeHandler = e => {
+  changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
     axiosConfig
       .post(`/admin/addbatch`, this.state)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.props.history.push("/app/freshlist/batch/batchList");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };

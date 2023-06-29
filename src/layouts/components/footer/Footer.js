@@ -23,7 +23,7 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            FreshList,
+            freshlist,
           </a>
           All rights reserved
         </span>

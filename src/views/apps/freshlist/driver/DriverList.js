@@ -47,7 +47,7 @@ class DriverList extends React.Component {
         field: "driver_img",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <img
@@ -66,7 +66,7 @@ class DriverList extends React.Component {
         field: "firstname",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center">
               <span>{params.data?.firstname}</span>
@@ -79,7 +79,7 @@ class DriverList extends React.Component {
         field: "lastname",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center">
               <span>{params.data?.lastname}</span>
@@ -92,7 +92,7 @@ class DriverList extends React.Component {
         field: "address	",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center">
               <span>{params.data.address}</span>
@@ -105,7 +105,7 @@ class DriverList extends React.Component {
         field: "email	",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center">
               <span>{params.data.email}</span>
@@ -118,7 +118,7 @@ class DriverList extends React.Component {
         field: "phone_no	",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center">
               <span>{params.data?.phone_no}</span>
@@ -149,7 +149,7 @@ class DriverList extends React.Component {
         field: "sortorder",
         field: "transactions",
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
               {/* <Eye
@@ -197,26 +197,26 @@ class DriverList extends React.Component {
   async componentDidMount() {
     await axiosConfig
       .get("/admin/getall_drive")
-      .then(response => {
+      .then((response) => {
         console.log(response.data.data);
         this.setState({ rowData: response.data.data });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("Error", err);
       });
   }
   async runthisfunction(id) {
     console.log(id);
     await axiosConfig.delete(`/admin/del_drive/${id}`).then(
-      response => {
+      (response) => {
         console.log(response);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   }
-  onGridReady = params => {
+  onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.setState({
@@ -225,10 +225,10 @@ class DriverList extends React.Component {
       totalPages: this.gridApi.paginationGetTotalPages(),
     });
   };
-  updateSearchQuery = val => {
+  updateSearchQuery = (val) => {
     this.gridApi.setQuickFilter(val);
   };
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
       this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
@@ -322,7 +322,7 @@ class DriverList extends React.Component {
                         <div className="table-input mr-1">
                           <Input
                             placeholder="search..."
-                            onChange={e =>
+                            onChange={(e) =>
                               this.updateSearchQuery(e.target.value)
                             }
                             value={this.state.value}
@@ -339,7 +339,7 @@ class DriverList extends React.Component {
                       </div>
                     </div>
                     <ContextLayout.Consumer>
-                      {context => (
+                      {(context) => (
                         <AgGridReact
                           gridOptions={{}}
                           rowSelection="multiple"

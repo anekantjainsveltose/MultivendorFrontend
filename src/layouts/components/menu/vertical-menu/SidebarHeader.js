@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ArrowRight, X, Circle } from "react-feather";
 import classnames from "classnames";
 import logo from "../../../../assets/img/logo/logo.png";
+
 class SidebarHeader extends Component {
   render() {
     let {
@@ -30,7 +31,7 @@ class SidebarHeader extends Component {
                 height="50px"
                 style={{ objectFit: "cover" }}
               />
-              {/* <h1 style={{ width: "100", color: "green" }}>FreshList</h1> */}
+              {/* <h1 style={{ width: "100", color: "green" }}>freshlist</h1> */}
             </NavLink>
           </li>
           <li className="nav-item nav-toggle">
