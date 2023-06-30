@@ -248,7 +248,11 @@ class ViewVendor extends React.Component {
                                 src={this.state.data?.adhar_img_front}
                                 alt="No Image"
                                 className="w-100 h-80 rounded-3"
-                                style={{ height: "50vh", objectFit: "cover",borderRadius:"10px" }}
+                                style={{
+                                  height: "50vh",
+                                  objectFit: "cover",
+                                  borderRadius: "10px",
+                                }}
                               />
                             </MDBCol>
                             <MDBCol className="mb-2">
@@ -256,7 +260,11 @@ class ViewVendor extends React.Component {
                                 src={this.state.data?.adhar_img_back}
                                 alt="image 1"
                                 className="w-100 h-80 rounded-3"
-                                style={{ height: "50vh", objectFit: "cover",borderRadius:"10px" }}
+                                style={{
+                                  height: "50vh",
+                                  objectFit: "cover",
+                                  borderRadius: "10px",
+                                }}
                               />
                             </MDBCol>
                           </MDBRow>
@@ -266,7 +274,11 @@ class ViewVendor extends React.Component {
                                 src={this.state.data?.pancard_img_front}
                                 alt="image 1"
                                 className="w-100 rounded-3"
-                                style={{ height: "50vh", objectFit: "cover",borderRadius:"10px" }}
+                                style={{
+                                  height: "50vh",
+                                  objectFit: "cover",
+                                  borderRadius: "10px",
+                                }}
                               />
                             </MDBCol>
                             <MDBCol className="mb-2">
@@ -274,7 +286,11 @@ class ViewVendor extends React.Component {
                                 src={this.state.data?.pancard_img_back}
                                 alt="image 1"
                                 className="w-100 rounded-3"
-                                style={{ height: "50vh", objectFit: "cover",borderRadius:"10px" }}
+                                style={{
+                                  height: "50vh",
+                                  objectFit: "cover",
+                                  borderRadius: "10px",
+                                }}
                               />
                             </MDBCol>
                           </MDBRow>
@@ -284,7 +300,11 @@ class ViewVendor extends React.Component {
                                 src={this.state.data?.passbook_img}
                                 alt="image 1"
                                 className="w-100 rounded-3"
-                                style={{ height: "50vh", objectFit: "cover",borderRadius:"10px" }}
+                                style={{
+                                  height: "50vh",
+                                  objectFit: "cover",
+                                  borderRadius: "10px",
+                                }}
                               />
                             </MDBCol>
                           </MDBRow>

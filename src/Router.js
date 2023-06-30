@@ -158,6 +158,7 @@ const EditVendor = lazy(() =>
 const ViewVendor = lazy(() =>
   import("./views/apps/freshlist/vendor/ViewVendor")
 );
+
 const WithDraws = lazy(() => import("./views/apps/freshlist/vendor/WithDraws"));
 const ViewWithDraws = lazy(() =>
   import("./views/apps/freshlist/vendor/ViewWithDraws")
