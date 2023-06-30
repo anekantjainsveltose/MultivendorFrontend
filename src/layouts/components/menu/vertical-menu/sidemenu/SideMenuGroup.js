@@ -1,41 +1,41 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Badge } from "reactstrap"
-import classnames from "classnames"
-import { ChevronRight } from "react-feather"
-import { FormattedMessage } from "react-intl"
+import React from "react";
+import { Link } from "react-router-dom";
+import { Badge } from "reactstrap";
+import classnames from "classnames";
+import { ChevronRight } from "react-feather";
+import { FormattedMessage } from "react-intl";
 
 class SideMenuGroup extends React.Component {
   constructor(props) {
-    super(props)
-    this.flag = true
-    this.parentArray = []
-    this.childObj = {}
+    super(props);
+    this.flag = true;
+    this.parentArray = [];
+    this.childObj = {};
   }
   state = {
     isOpen: false,
-    activeItem: this.props.activePath
-  }
+    activeItem: this.props.activePath,
+  };
 
-  handleActiveItem = url => {
+  handleActiveItem = (url) => {
     this.setState({
-      activeItem: url
-    })
-  }
+      activeItem: url,
+    });
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.activePath !== this.props.activePath) {
       if (this.childObj.navLink && this.childObj.collapsed) {
-        this.props.collapsedMenuPaths(this.childObj.navLink)
+        this.props.collapsedMenuPaths(this.childObj.navLink);
       }
       if (
         this.props.activePath === this.childObj.navLink &&
         !this.props.parentArr.includes(this.parentArray[0])
       ) {
-        this.props.parentArr.splice(0, this.props.parentArr.length)
-        this.props.parentArr.push(this.parentArray)
+        this.props.parentArr.splice(0, this.props.parentArr.length);
+        this.props.parentArr.push(this.parentArray);
       } else if (this.props.parentArr.includes(this.parentArray)) {
-        this.props.parentArr.splice(0, this.props.parentArr.length)
+        this.props.parentArr.splice(0, this.props.parentArr.length);
       }
     }
   }
@@ -44,21 +44,21 @@ class SideMenuGroup extends React.Component {
     return (
       <ul className="menu-content">
         {item.children
-          ? item.children.map(child => {
+          ? item.children.map((child) => {
               const CustomAnchorTag =
-                child.type === "external-link" ? `a` : Link
+                child.type === "external-link" ? `a` : Link;
               if (!this.parentArray.includes(item.id) && this.flag) {
-                this.parentArray.push(item.id)
+                this.parentArray.push(item.id);
               }
 
               if (child.navlink && child.collapsed) {
-                this.props.collapsedMenuPaths(child.navLink)
+                this.props.collapsedMenuPaths(child.navLink);
               }
 
               if (this.props.activeItemState === child.navLink) {
-                this.childObj = child
-                this.props.parentArr.push(this.parentArray)
-                this.flag = false
+                this.childObj = child;
+                this.props.parentArr.push(this.parentArray);
+                this.flag = false;
               }
               if (
                 (child.permissions &&
@@ -74,33 +74,33 @@ class SideMenuGroup extends React.Component {
                       open:
                         child.type === "collapse" &&
                         activeGroup.includes(child.id),
-                      "sidebar-group-active": this.props.currentActiveGroup.includes(
-                        child.id
-                      ),
+                      "sidebar-group-active":
+                        this.props.currentActiveGroup.includes(child.id),
                       active:
                         (this.props.activeItemState === child.navLink &&
                           child.type === "item") ||
                         (item.parentOf &&
                           item.parentOf.includes(this.props.activeItemState)),
-                      disabled: child.disabled
+                      disabled: child.disabled,
                     })}
-                    onClick={e => {
-                      e.stopPropagation()
-                      handleGroupClick(child.id, item.id, child.type)
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleGroupClick(child.id, item.id, child.type);
                       if (child.navLink && child.navLink !== undefined) {
-                        handleActiveItem(child.navLink)
+                        handleActiveItem(child.navLink);
                       }
                       if (
                         this.props.deviceWidth <= 1200 &&
                         child.type === "item"
                       ) {
-                        this.props.toggleMenu()
+                        this.props.toggleMenu();
                       }
-                    }}>
+                    }}
+                  >
                     <CustomAnchorTag
                       className={classnames({
                         "d-flex justify-content-between":
-                          child.type === "collapse"
+                          child.type === "collapse",
                       })}
                       to={
                         child.navLink && child.type === "item"
@@ -109,21 +109,25 @@ class SideMenuGroup extends React.Component {
                       }
                       href={child.type === "external-link" ? child.navLink : ""}
                       onMouseEnter={() => {
-                        this.props.handleSidebarMouseEnter(child.id)
+                        this.props.handleSidebarMouseEnter(child.id);
                       }}
                       onMouseLeave={() => {
-                        this.props.handleSidebarMouseEnter(child.id)
+                        this.props.handleSidebarMouseEnter(child.id);
                       }}
                       key={child.id}
-                      onClick={e => {
+                      onClick={(e) => {
                         return child.type === "collapse"
                           ? e.preventDefault()
-                          : ""
+                          : "";
                       }}
-                      target={child.newTab ? "_blank" : undefined}>
+                      target={child.newTab ? "_blank" : undefined}
+                    >
                       <div className="menu-text">
                         {child.icon}
-                        <span className="menu-item menu-title">
+                        <span
+                          className="menu-item menu-title"
+                          style={{ fontSize: "14px", fontWeight: 300 }}
+                        >
                           <FormattedMessage id={child.title} />
                         </span>
                       </div>
@@ -131,7 +135,8 @@ class SideMenuGroup extends React.Component {
                         <Badge
                           color={child.badge}
                           className="float-right mr-2"
-                          pill>
+                          pill
+                        >
                           {child.badgeText}
                         </Badge>
                       ) : (
@@ -154,19 +159,19 @@ class SideMenuGroup extends React.Component {
                         )
                       : ""}
                   </li>
-                )
+                );
               } else if (
                 child.navLink === this.props.activePath &&
                 !child.permissions.includes(this.props.currentUser)
               ) {
-                return this.props.redirectUnauthorized()
+                return this.props.redirectUnauthorized();
               } else {
-                return null
+                return null;
               }
             })
           : null}
       </ul>
-    )
+    );
   }
 
   render() {
@@ -180,7 +185,7 @@ class SideMenuGroup extends React.Component {
           null
         )}
       </React.Fragment>
-    )
+    );
   }
 }
-export default SideMenuGroup
+export default SideMenuGroup;

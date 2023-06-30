@@ -130,6 +130,7 @@ class SideMenuContent extends React.Component {
         return (
           <li
             className="navigation-header"
+            style={{ fontWeight: 500, margin: "10px 13px", fontSize: "15px" }}
             key={`group-header-${item.groupTitle}`}
           >
             <span>{item.groupTitle}</span>
@@ -175,6 +176,7 @@ class SideMenuContent extends React.Component {
                 ? item.navLink
                 : ""
             }
+            style={{ padding: "11px 6px" }}
             href={item.type === "external-link" ? item.navLink : ""}
             className={`d-flex ${
               item.badgeText
@@ -193,9 +195,16 @@ class SideMenuContent extends React.Component {
             }}
             target={item.newTab ? "_blank" : undefined}
           >
-            <div className="menu-text">
+            <div className="menu-text" style={{ width: "215px" }}>
               {item.icon}
-              <span className="menu-item menu-title">
+              <span
+                // className="menu-item menu-title"
+                style={{
+                  fontWeight: 300,
+                  fontSize: "14px",
+                  width: "200px !important",
+                }}
+              >
                 <FormattedMessage id={item.title} />
               </span>
             </div>

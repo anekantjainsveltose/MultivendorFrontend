@@ -13,6 +13,62 @@ import { ContextLayout } from "./utility/context/Layout";
 // );
 const MainDash = lazy(() => import("./views/dashboard/analytics/MainDash"));
 
+// Category
+const CategoryList = lazy(() =>
+  import("./views/apps/fabtech/category/CategoryList")
+);
+const AddCategory = lazy(() =>
+  import("./views/apps/fabtech/category/AddCategory")
+);
+const EditCategory = lazy(() =>
+  import("./views/apps/fabtech/category/EditCategory")
+);
+const ViewCategory = lazy(() =>
+  import("./views/apps/fabtech/category/ViewCategory")
+);
+
+// Employee
+const employeeList = lazy(() =>
+  import("./views/apps/fabtech/employee/employeeList")
+);
+const addEmployee = lazy(() =>
+  import("./views/apps/fabtech/employee/addEmployee")
+);
+const editEmployee = lazy(() =>
+  import("./views/apps/fabtech/employee/editEmployee")
+);
+const viewEmployee = lazy(() =>
+  import("./views/apps/fabtech/employee/viewEmployee")
+);
+
+// Payroll
+const payrollList = lazy(() =>
+  import("./views/apps/fabtech/payroll/payrollList")
+);
+const addPayroll = lazy(() =>
+  import("./views/apps/fabtech/payroll/addPayroll")
+);
+const editPayroll = lazy(() =>
+  import("./views/apps/fabtech/payroll/editPayroll")
+);
+const viewPayroll = lazy(() =>
+  import("./views/apps/fabtech/payroll/viewPayroll")
+);
+
+// WareHouse
+const warehouseList = lazy(() =>
+  import("./views/apps/fabtech/warehouse/warehouseList")
+);
+const addWarehouse = lazy(() =>
+  import("./views/apps/fabtech/warehouse/addWarehouse")
+);
+const editWarehouse = lazy(() =>
+  import("./views/apps/fabtech/warehouse/editWarehouse")
+);
+const viewWarehouse = lazy(() =>
+  import("./views/apps/fabtech/warehouse/viewWarehouse")
+);
+
 const ecommerceDashboard = lazy(() =>
   import("./views/dashboard/ecommerce/EcommerceDashboard")
 );
@@ -296,19 +352,6 @@ const SaleReport = lazy(() =>
 );
 const TaxReport = lazy(() => import("./views/apps/freshlist/report/TaxReport"));
 
-// Category
-const CategoryList = lazy(() =>
-  import("./views/apps/freshlist/category/CategoryList")
-);
-const AddCategory = lazy(() =>
-  import("./views/apps/freshlist/category/AddCategory")
-);
-const EditCategory = lazy(() =>
-  import("./views/apps/freshlist/category/EditCategory")
-);
-const ViewCategory = lazy(() =>
-  import("./views/apps/freshlist/category/ViewCategory")
-);
 // Subcategory SubCategoryList
 const SubCategoryList = lazy(() =>
   import("./views/apps/freshlist/subcategory/SubCategoryList")
@@ -442,7 +485,7 @@ const userList = lazy(() => import("./views/apps/user/list/List"));
 const userEdit = lazy(() => import("./views/apps/user/edit/Edit"));
 const userView = lazy(() => import("./views/apps/user/view/View"));
 const email = lazy(() => import("./views/apps/email/Email"));
-const chat = lazy(() => import("./views/apps/chat/Chat"));
+// const chat = lazy(() => import("./views/apps/chat/Chat"));
 const todo = lazy(() => import("./views/apps/todo/Todo"));
 const calendar = lazy(() => import("./views/apps/calendar/Calendar"));
 const shop = lazy(() => import("./views/apps/ecommerce/shop/Shop"));
@@ -664,6 +707,87 @@ class AppRouter extends React.Component {
       />
     <Route path="/login" component={Login} /> */}
           <AppRoute exact path="/dashboard" component={MainDash} />
+          {/* Category */}
+          <AppRoute
+            path="/app/freshlist/category/categoryList"
+            component={CategoryList}
+          />
+          <AppRoute
+            path="/app/freshlist/category/addCategory"
+            component={AddCategory}
+          />
+          <AppRoute
+            path="/app/freshlist/category/editCategory/:id"
+            component={EditCategory}
+          />
+          <AppRoute
+            path="/app/freshlist/category/viewCategory/:id"
+            exact
+            component={ViewCategory}
+          />
+          {/* Employee */}
+          <AppRoute
+            path="/app/freshlist/employee/employeesList"
+            exact
+            component={employeeList}
+          />
+          <AppRoute
+            path="/app/freshlist/employee/addEmployee"
+            exact
+            component={addEmployee}
+          />
+          <AppRoute
+            path="/app/freshlist/employee/editEmployee/:id"
+            component={editEmployee}
+            exact
+          />
+          <AppRoute
+            exact
+            path="/app/freshlist/employee/viewEmployee/:id"
+            component={viewEmployee}
+          />
+          {/* Payroll */}
+          <AppRoute
+            path="/app/freshlist/payroll/payrollList"
+            exact
+            component={payrollList}
+          />
+          <AppRoute
+            path="/app/freshlist/payroll/addPayroll"
+            exact
+            component={addPayroll}
+          />
+          <AppRoute
+            path="/app/freshlist/payroll/editPayroll/:id"
+            component={editPayroll}
+            exact
+          />
+          <AppRoute
+            exact
+            path="/app/freshlist/payroll/viewPayroll/:id"
+            component={viewPayroll}
+          />
+          {/* WareHouse */}
+          <AppRoute
+            path="/app/freshlist/warehouse/warehouseList"
+            exact
+            component={warehouseList}
+          />
+          <AppRoute
+            path="/app/freshlist/warehouse/createWarehouse"
+            exact
+            component={addWarehouse}
+          />
+          <AppRoute
+            path="/app/freshlist/warehouse/editWarehouse/:id"
+            component={editWarehouse}
+            exact
+          />
+          <AppRoute
+            exact
+            path="/app/freshlist/warehouse/viewWarehouse/:id"
+            component={viewWarehouse}
+          />
           <AppRoute
             path="/ecommerce-dashboard"
             component={ecommerceDashboard}
@@ -1020,22 +1144,6 @@ class AppRouter extends React.Component {
             component={TaxReport}
           />
           {/* category */}
-          <AppRoute
-            path="/app/freshlist/category/categoryList"
-            component={CategoryList}
-          />
-          <AppRoute
-            path="/app/freshlist/category/addCategory"
-            component={AddCategory}
-          />
-          <AppRoute
-            path="/app/freshlist/category/editCategory/:id"
-            component={EditCategory}
-          />
-          <AppRoute
-            path="/app/freshlist/category/viewCategory/:id"
-            component={ViewCategory}
-          />
           {/* Subcategory */}
           <AppRoute
             path="/app/freshlist/subcategory/subCategoryList"
@@ -1238,7 +1346,7 @@ class AppRouter extends React.Component {
             component={() => <Redirect to="/email/inbox" />}
           />
           <AppRoute path="/email/:filter" component={email} />
-          <AppRoute path="/chat" component={chat} />
+          {/* <AppRoute path="/chat" component={chat} /> */}
           <AppRoute
             path="/todo"
             exact

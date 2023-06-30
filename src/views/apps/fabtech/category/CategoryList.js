@@ -5,35 +5,32 @@ import {
   Input,
   Row,
   Col,
+  Button,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  Button,
   Badge,
 } from "reactstrap";
 import axiosConfig from "../../../../axiosConfig";
+
 import { ContextLayout } from "../../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
-//import classnames from "classnames";
+import { Edit, Trash2, ChevronDown, Eye } from "react-feather";
 import { history } from "../../../../history";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../../assets/scss/pages/users.scss";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
-class VendorList extends React.Component {
+class CategoryList extends React.Component {
   state = {
-    activeTab: "1",
-    modal: false,
     rowData: [],
     paginationPageSize: 20,
     currenPageSize: "",
     getPageSize: "",
     defaultColDef: {
       sortable: true,
-      // editable: true,
+      editable: true,
       resizable: true,
       suppressMenu: true,
     },
@@ -45,104 +42,9 @@ class VendorList extends React.Component {
         width: 100,
         filter: true,
       },
-
       {
-        headerName: "Name",
-        field: "cus_name",
-        //filter: true,
-        filter: "agSetColumnFilter",
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <div className="">
-                <span>{params?.data?.name}</span>
-              </div>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Mobile",
-        field: "mobile",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.mobile}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Door Number",
-        field: "doorNo",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.door_number}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Street",
-        field: "street",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.street}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Location",
-        field: "location",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.location}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "City",
-        field: "city",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.city}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "PinCode",
-        field: "pincode",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.pincode}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Vendor Image",
-        field: "vendoor_img",
+        headerName: "Image",
+        field: "image",
         filter: true,
         width: 100,
         cellRendererFramework: (params) => {
@@ -150,8 +52,8 @@ class VendorList extends React.Component {
             <div className="d-flex align-items-center cursor-pointer">
               <img
                 className="rounded-circle mr-50"
-                src={params.data?.vendoor_img}
-                alt="Vendor"
+                src={params.data?.image}
+                alt="user avatar"
                 height="40"
                 width="40"
               />
@@ -159,62 +61,104 @@ class VendorList extends React.Component {
           );
         },
       },
-
+      {
+        headerName: "Name",
+        field: "category_name",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data?.category_name}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Type",
+        field: "type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data?.type}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Featured",
+        field: "feature",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span className="" style={{ textTransform: "uppercase" }}>
+                {params.data?.feature}
+              </span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Status",
         field: "status",
         filter: true,
         width: 100,
         cellRendererFramework: (params) => {
-          return params.value === "true" ? (
+          return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
-              {params?.data?.status}
+              {params.data.status}
             </div>
-          ) : params.value === "false" ? (
-            <div className="badge badge-pill badge-danger">
-              {params?.data?.status}
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
             </div>
           ) : null;
         },
       },
       {
         headerName: "Actions",
-        field: "Actions",
-        width: 180,
+        field: "sortorder",
+        field: "transactions",
+        width: 150,
         cellRendererFramework: (params) => {
           return (
-            <div>
+            <div className="actions cursor-pointer">
               <Route
                 render={({ history }) => (
                   <>
                     <Eye
-                      className="m-1"
+                      className="mr-50"
                       size="25px"
                       color="green"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/vendor/viewVendor/${params?.data?._id}`
+                          `/app/freshlist/category/viewCategory/${params.data._id}`
                         )
                       }
                     />
+
                     <Edit
+                      className="mr-50"
                       size="25px"
                       color="blue"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/vendor/editVendor/${params?.data?._id}`
+                          `/app/freshlist/category/editCategory/${params.data._id}`
                         )
                       }
                     />
                   </>
                 )}
               />
-
               <Route
                 render={({ history }) => (
                   <Trash2
-                    className="m-1"
-                    size={20}
+                    className="mr-50"
+                    size="25px"
                     color="red"
                     onClick={() => {
                       let selectedData = this.gridApi.getSelectedRows();
@@ -232,7 +176,7 @@ class VendorList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/app/vender_getlist").then((response) => {
+    await axiosConfig.get("/admin/getallcategory").then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -241,11 +185,15 @@ class VendorList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deleteproductcategory/${id}`).then((response) => {
-      console.log(response);
-    });
+    await axiosConfig.delete(`/admin/del_one_category/${id}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -255,11 +203,9 @@ class VendorList extends React.Component {
       totalPages: this.gridApi.paginationGetTotalPages(),
     });
   };
-
   updateSearchQuery = (val) => {
     this.gridApi.setQuickFilter(val);
   };
-
   filterSize = (val) => {
     if (this.gridApi) {
       this.gridApi.paginationSetPageSize(Number(val));
@@ -269,36 +215,32 @@ class VendorList extends React.Component {
       });
     }
   };
-
   render() {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
-      <>
+      console.log(rowData),
+      (
         <Row className="app-user-list">
           <Col sm="12"></Col>
           <Col sm="12">
             <Card>
               <Row className="m-2">
                 <Col>
-                  <h1 col-sm-6 className="float-left">
-                    Suppliers List
+                  <h1 sm="6" className="float-left">
+                    Category List
                   </h1>
                 </Col>
-                <Col>
-                  <Route
-                    render={({ history }) => (
-                      <Button
-                        className="float-right"
-                        color="primary"
-                        onClick={() =>
-                          history.push("/app/freshlist/vendor/addVendor")
-                        }
-                      >
-                        Add Supplier
-                      </Button>
-                    )}
-                  />
-                </Col>
+                {/* <Col>
+                  <Button
+                    style={{ marginRight: "-22rem" }}
+                    className="btn btn-danger float-right"
+                    onClick={() =>
+                      history.push("/app/freshlist/category/CategoryList")
+                    }
+                  >
+                    Back
+                  </Button>
+                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -395,9 +337,8 @@ class VendorList extends React.Component {
             </Card>
           </Col>
         </Row>
-      </>
+      )
     );
   }
 }
-
-export default VendorList;
+export default CategoryList;

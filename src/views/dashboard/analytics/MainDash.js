@@ -20,6 +20,7 @@ import { BsBoxSeam } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import AnalyticsDashboard from "./AnalyticsDashboard";
+import ChartJS from "../../charts/chart-js/ChartJS";
 
 class MainDash extends React.Component {
   constructor(props) {
@@ -150,6 +151,7 @@ class MainDash extends React.Component {
           </Col>
         </Row>
         <AnalyticsDashboard />
+        <ChartJS />
       </React.Fragment>
     );
   }

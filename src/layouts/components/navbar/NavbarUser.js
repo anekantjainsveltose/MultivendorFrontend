@@ -21,16 +21,17 @@ import { history } from "../../../history";
 import { IntlContext } from "../../../utility/context/Internationalization";
 import { Route } from "react-router-dom";
 
-const handleNavigation = (e) => {
-  e.preventDefault();
-  history.push("/#/pages/profile/userProfile");
-};
-
 const UserDropdown = (props) => {
-  // const { logout, isAuthenticated } = useAuth0()
   return (
     <DropdownMenu right>
-      <DropdownItem tag="a" href="#" onClick={(e) => handleNavigation(e)}>
+      <DropdownItem
+        tag="a"
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          history.push("/#/pages/profile/userProfile");
+        }}
+      >
         <Icon.User size={14} className="mr-50" />
         <span className="align-middle">Edit Profile</span>
       </DropdownItem>
@@ -168,7 +169,11 @@ class NavbarUser extends React.PureComponent {
     axios.get("/api/main-search/data").then(({ data }) => {
       this.setState({ suggestions: data.searchResult });
     });
-    let data = JSON.parse(localStorage.getItem("userData")); //forgot to close
+    let data = JSON.parse(localStorage.getItem("userData"));
+    if (!data.image) {
+      data.image =
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+    } //forgot to close
     this.setState({ userData: data });
   }
 
@@ -437,7 +442,7 @@ class NavbarUser extends React.PureComponent {
           <DropdownToggle tag="a" className="nav-link dropdown-user-link">
             <div className="user-nav d-sm-flex d-none">
               <span className="user-name text-bold-600">
-                {userData?.name}
+                {userData?.username}
                 {/* {userData.name === undefined ? userData.name : null} */}
               </span>
               {/* <span className="user-status">{this.state.userData.name}</span> */}

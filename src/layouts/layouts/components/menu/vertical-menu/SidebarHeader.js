@@ -18,7 +18,7 @@ class SidebarHeader extends Component {
       <div className="navbar-header">
         <ul className="nav navbar-nav flex-row">
           <li className="nav-item mr-auto">
-            <NavLink to="/" className="navbar-brand">
+            <NavLink to="/dashboard" className="navbar-brand">
               <div className="brand-logo" />
               {/* <h2 className="brand-text mb-0">Deepak</h2> */}
               <img
@@ -26,7 +26,11 @@ class SidebarHeader extends Component {
                 alt="logo"
                 width="150px"
                 height="80px"
-                style={{ width: "150", objectFit: "cover" }}
+                style={{
+                  width: "150",
+                  objectFit: "cover",
+                  marginBottom: "10px",
+                }}
               />
             </NavLink>
           </li>

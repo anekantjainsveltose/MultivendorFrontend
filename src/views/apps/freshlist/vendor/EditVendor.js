@@ -210,7 +210,7 @@ export class EditVendor extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Vendor
+                Edit Supplier
               </h1>
             </Col>
             <Col>
@@ -356,7 +356,7 @@ export class EditVendor extends Component {
               </Row>
               <Row className="mb-2 mt-2">
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Vendor Image</Label>
+                  <Label>Supplier Image</Label>
                   <CustomInput type="file" onChange={this.onChangeHandler1} />
                 </Col>
                 <Col lg="6" md="6" className="mb-1">

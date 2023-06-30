@@ -1,12 +1,12 @@
-import React from "react"
-import { Card, CardHeader, CardTitle, CardBody, Row, Col } from "reactstrap"
+import React from "react";
+import { Card, CardHeader, CardTitle, CardBody, Row, Col } from "reactstrap";
 import {
   MoreVertical,
   ThumbsDown,
   ThumbsUp,
-  MessageSquare
-} from "react-feather"
-import cardImg from "../../../../assets/img/pages/content-img-4.jpg"
+  MessageSquare,
+} from "react-feather";
+import cardImg from "../../../../assets/img/pages/content-img-4.jpg";
 
 class SocialAndVideoCards extends React.Component {
   render() {
@@ -44,21 +44,11 @@ class SocialAndVideoCards extends React.Component {
         </Col>
         <Col lg="8" sm="12">
           <Card className="overflow-hidden">
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/mcixldqDIEQ"
-                frameBorder="0"
-                allow="accelerometer autoplay encrypted-media gyroscope picture-in-picture"
-                allowFullScreen
-                title="video"
-              />
-            </div>
+            <div className="embed-responsive embed-responsive-16by9"></div>
           </Card>
         </Col>
       </Row>
-    )
+    );
   }
 }
-export default SocialAndVideoCards
+export default SocialAndVideoCards;

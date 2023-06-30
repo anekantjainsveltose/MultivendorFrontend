@@ -22,7 +22,7 @@ import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../../assets/scss/pages/users.scss";
 import { Route, Link } from "react-router-dom";
 
-class CategoryList extends React.Component {
+class EmployeeList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -136,7 +136,7 @@ class CategoryList extends React.Component {
                       color="green"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/category/viewCategory/${params.data._id}`
+                          `/app/freshlist/employee/viewEmployee/${params.data._id}`
                         )
                       }
                     />
@@ -147,7 +147,7 @@ class CategoryList extends React.Component {
                       color="blue"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/category/editCategory/${params.data._id}`
+                          `/app/freshlist/employee/editEmployee/${params.data._id}`
                         )
                       }
                     />
@@ -227,7 +227,7 @@ class CategoryList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Category List
+                    Employee List
                   </h1>
                 </Col>
                 {/* <Col>
@@ -235,27 +235,12 @@ class CategoryList extends React.Component {
                     style={{ marginRight: "-22rem" }}
                     className="btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/category/CategoryList")
+                      history.push("/app/freshlist/category/EmployeeList")
                     }
                   >
                     Back
                   </Button>
                 </Col> */}
-                <Col>
-                  <Route
-                    render={({ history }) => (
-                      <Button
-                        className="btn float-right"
-                        color="primary"
-                        onClick={() =>
-                          history.push("/app/freshlist/category/addCategory")
-                        }
-                      >
-                        Add Category
-                      </Button>
-                    )}
-                  />
-                </Col>
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -356,4 +341,4 @@ class CategoryList extends React.Component {
     );
   }
 }
-export default CategoryList;
+export default EmployeeList;

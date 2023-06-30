@@ -2,45 +2,30 @@ import React from "react";
 import {
   FaRegFileAlt,
   FaStream,
-  FaStar,
   FaGopuram,
-  FaPodcast,
-  FaFileSignature,
-  FaBell,
-  FaShoppingBag,
-  FaWallet,
   FaHome,
-  FaUserEdit,
-  FaAdversal,
-  FaStore,
-  FaUsers,
   FaCircle,
-  FaCog,
-  FaQuestionCircle,
-  FaSlidersH,
-  FaUser,
-  FaShoppingCart,
-  FaGift,
   FaProductHunt,
 } from "react-icons/fa";
 import * as Icon from "react-feather";
-import { BsImage } from "react-icons/bs";
-import { MdOutlineFolderSpecial } from "react-icons/md";
-import { GiWantedReward } from "react-icons/gi";
-import { CiDiscount1 } from "react-icons/ci";
-import { TbTruckDelivery } from "react-icons/tb";
-import { AiFillBell } from "react-icons/ai";
-import { FiBarChart2 } from "react-icons/fi";
 
 // eslint-disable-next-line no-sparse-arrays
 const navigationConfig = [
+  {
+    id: "dashboard",
+    title: "Dashboard",
+    type: "item",
+    icon: <FaHome size={15} />,
+    permissions: ["admin", "editor"],
+    navLink: "/dashboard",
+  },
   {
     type: "groupHeader",
     groupTitle: "Stock Manager",
   },
   {
     id: "product_attribute",
-    title: "PRODUCT MANAGEMENT",
+    title: "Product Management",
     type: "collapse",
     icon: <FaProductHunt size={15} />,
     children: [
@@ -72,55 +57,72 @@ const navigationConfig = [
   },
   {
     id: "categorys",
-    title: "PRODUCT CATEGORY MANAGEMENT",
+    title: "Category Management",
     type: "collapse",
     icon: <FaStream size={15} />,
     children: [
       {
-        id: "category",
+        id: "addCategory",
+        title: "Add Category",
+        type: "item",
+        icon: <FaCircle size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/category/addCategory",
+      },
+      {
+        id: "Category",
         title: "Category",
         type: "item",
         icon: <FaCircle size={8} />,
         permissions: ["admin", "editor"],
         navLink: "/app/freshlist/category/categoryList",
       },
+    ],
+  },
+  {
+    id: "Warehouses",
+    title: "Warehouse Management",
+    type: "collapse",
+    icon: <FaHome size={15} />,
+    permissions: ["admin", "editor"],
+    children: [
       {
-        id: "subcategory",
-        title: "Subcategory",
+        id: "createwarehouse",
+        title: "Create Warehouse",
         type: "item",
-        icon: <FaCircle size={8} />,
+        icon: <Icon.User size={8} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/freshlist/subcategory/subCategoryList",
+        navLink: "/app/freshlist/warehouse/createWarehouse",
+      },
+      {
+        id: "warehouse",
+        title: "Warehouse",
+        type: "item",
+        icon: <Icon.User size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/warehouse/warehouseList",
       },
     ],
   },
   {
-    id: "dashboard",
-    title: "WAREHOUSE MANAGEMENT",
-    type: "item",
-    icon: <FaHome size={15} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/freshlist/house/houseProductList",
-  },
-  {
-    id: "dashboard",
-    title: "PURCHASE ORDER",
+    id: "PurchaseOrder",
+    title: "Purchase Order",
     type: "item",
     icon: <Icon.ShoppingCart size={15} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/freshlist/house/houseProductList",
+    navLink: "/app/freshlist/order/all",
   },
   {
-    id: "dashboard",
-    title: "SUPPLIERS MANAGEMENT",
+    id: "SuppliersManagement",
+    title: "Suppliers Management",
     type: "item",
     icon: <Icon.User size={15} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/freshlist/house/houseProductList",
+    navLink: "/app/freshlist/vendor/vendorList",
   },
   {
     id: "dashboard",
-    title: "STOCK RETURN",
+    title: "Stock Return",
     type: "item",
     icon: <Icon.Layers size={15} />,
     permissions: ["admin", "editor"],
@@ -128,7 +130,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "STOCK RETURN ( CUSTOMER )",
+    title: "Stock Return (Customer)",
     type: "item",
     icon: <Icon.Layers size={15} />,
     permissions: ["admin", "editor"],
@@ -136,7 +138,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "STOCK TRANSFER",
+    title: "Stock Transfer",
     type: "item",
     icon: <Icon.Layers size={15} />,
     permissions: ["admin", "editor"],
@@ -144,11 +146,11 @@ const navigationConfig = [
   },
   {
     type: "groupHeader",
-    groupTitle: "SALES",
+    groupTitle: "Sales",
   },
   {
     id: "dashboard",
-    title: "STANDARD INVOICE",
+    title: "Standard invoice",
     type: "item",
     icon: <Icon.FileText size={15} />,
     permissions: ["admin", "editor"],
@@ -156,7 +158,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "QUOTES MANAGEMENT",
+    title: "Quotes Management",
     type: "item",
     icon: <Icon.FileMinus size={15} />,
     permissions: ["admin", "editor"],
@@ -164,7 +166,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "CREDIT NOTES",
+    title: "Credit Notes",
     type: "item",
     icon: <Icon.CreditCard size={15} />,
     permissions: ["admin", "editor"],
@@ -172,17 +174,17 @@ const navigationConfig = [
   },
   {
     type: "groupHeader",
-    groupTitle: "FINANCE",
+    groupTitle: "Finance",
   },
   {
     id: "order",
-    title: "ACCOUNT MANAGEMENT",
+    title: "Account Management",
     type: "collapse",
     icon: <Icon.User size={15} />,
     children: [
       {
         id: "outfordelivery",
-        title: "ACCOUNT MANAGEMENT",
+        title: "Account Management",
         type: "item",
         icon: <Icon.User size={8} />,
         permissions: ["admin", "editor"],
@@ -190,7 +192,7 @@ const navigationConfig = [
       },
       {
         id: "delivery",
-        title: "TRANSACTION MANAGEMENT",
+        title: "Transection Management",
         type: "item",
         icon: <Icon.DollarSign size={8} />,
         permissions: ["admin", "editor"],
@@ -200,41 +202,75 @@ const navigationConfig = [
   },
   {
     type: "groupHeader",
-    groupTitle: "HRM",
+    groupTitle: "Hrm",
   },
   {
-    id: "dashboard",
-    title: "EMPLOYEE MANAGEMENT",
-    type: "item",
+    id: "Employee",
+    title: "Employee Management",
+    type: "collapse",
     icon: <Icon.Users size={15} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/freshlist/house/houseProductList",
+    children: [
+      {
+        id: "addEmployee",
+        title: "Add Employee",
+        type: "item",
+        icon: <Icon.User size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/employee/addEmployee",
+      },
+      {
+        id: "delivery",
+        title: "Employees",
+        type: "item",
+        icon: <Icon.User size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/employee/employeesList",
+      },
+    ],
   },
   {
     id: "dashboard",
-    title: "DEPARTMENTS",
+    title: "Departments",
     type: "item",
     icon: <Icon.Codepen size={15} />,
     permissions: ["admin", "editor"],
     navLink: "/app/freshlist/house/houseProductList",
   },
   {
-    id: "dashboard",
-    title: "PAYROLL",
-    type: "item",
+    id: "payroll",
+    title: "Payroll",
+    type: "collapse",
     icon: <Icon.CreditCard size={15} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/freshlist/house/houseProductList",
+    children: [
+      {
+        id: "addPayroll",
+        title: "Add Payroll",
+        type: "item",
+        icon: <Icon.CreditCard size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/payroll/addPayroll",
+      },
+      {
+        id: "Payrolls",
+        title: "Payrolls",
+        type: "item",
+        icon: <Icon.CreditCard size={8} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/freshlist/payroll/payrollList",
+      },
+    ],
   },
   {
     id: "refund",
-    title: "ATTENDANCE",
+    title: "Attendance",
     type: "collapse",
     icon: <FaRegFileAlt size={15} />,
     children: [
       {
         id: "comp",
-        title: "ATTENDANCE",
+        title: "Attendance",
         type: "item",
         icon: <FaCircle size={8} />,
         permissions: ["admin", "editor"],
@@ -242,7 +278,7 @@ const navigationConfig = [
       },
       {
         id: "reject",
-        title: "HOLIDAY/LEAVE MANAGEMENT",
+        title: "Holiday/Leave Management",
         type: "item",
         icon: <FaCircle size={8} />,
         permissions: ["admin", "editor"],
@@ -252,11 +288,11 @@ const navigationConfig = [
   },
   {
     type: "groupHeader",
-    groupTitle: "STAFF",
+    groupTitle: "Staff",
   },
   {
     id: "dashboard",
-    title: "DEPARTMENTS",
+    title: "Departments",
     type: "item",
     icon: <Icon.Users size={15} />,
     permissions: ["admin", "editor"],
@@ -264,7 +300,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "EMPLOYEES",
+    title: "Employee",
     type: "item",
     icon: <Icon.Users size={15} />,
     permissions: ["admin", "editor"],
@@ -272,7 +308,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "ROLE ASSIGN",
+    title: "Role Assign",
     type: "item",
     icon: <Icon.Award size={15} />,
     permissions: ["admin", "editor"],
@@ -280,7 +316,7 @@ const navigationConfig = [
   },
   {
     id: "dashboard",
-    title: "PERMISSION SET",
+    title: "Permission Set",
     type: "item",
     icon: <Icon.Settings size={15} />,
     permissions: ["admin", "editor"],

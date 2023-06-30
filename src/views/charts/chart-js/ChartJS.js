@@ -1,27 +1,27 @@
-import React from "react"
-import { Row, Col } from "reactstrap"
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb"
-import LineChart from "./lineChart"
-import BarChart from "./BarChart"
-import HorizontalBarChart from "./HorizontalBarChart"
-import PieChart from "./PieChart"
-import DoughnutChart from "./DoughnutChart"
-import RadarChart from "./RadarChart"
-import PolarChart from "./PolarChart"
-import BubbleChart from "./BubbleChart"
-import ScatterChart from "./ScatterChart"
+import React from "react";
+import { Row, Col } from "reactstrap";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+import LineChart from "./lineChart";
+import BarChart from "./BarChart";
+import HorizontalBarChart from "./HorizontalBarChart";
+import PieChart from "./PieChart";
+import DoughnutChart from "./DoughnutChart";
+import RadarChart from "./RadarChart";
+import PolarChart from "./PolarChart";
+import BubbleChart from "./BubbleChart";
+import ScatterChart from "./ScatterChart";
 
 class ChartJS extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Breadcrumbs
+        {/* <Breadcrumbs
           breadCrumbTitle="React ChartJS 2"
           breadCrumbParent="Charts"
           breadCrumbActive="ChartJS"
-        />
+        /> */}
         <Row>
-          <Col sm="12">
+          {/* <Col sm="12">
             <p>
               React wrapper for Chart.js. Click{" "}
               <a
@@ -33,7 +33,7 @@ class ChartJS extends React.Component {
               </a>{" "}
               for github repo.
             </p>
-          </Col>
+          </Col> */}
           <Col lg="6" sm="12">
             <LineChart />
           </Col>
@@ -63,8 +63,8 @@ class ChartJS extends React.Component {
           </Col>
         </Row>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default ChartJS
+export default ChartJS;

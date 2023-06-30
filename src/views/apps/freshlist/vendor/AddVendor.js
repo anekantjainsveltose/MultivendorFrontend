@@ -164,7 +164,7 @@ export class AddVendor extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add New Vendor
+                Add New Supplier
               </h1>
             </Col>
             <Col>
@@ -321,7 +321,7 @@ export class AddVendor extends Component {
               </Row>
               <Row className="mb-2 mt-2">
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Vendor Image</Label>
+                  <Label>Supplier Image</Label>
                   <CustomInput
                     required
                     type="file"
