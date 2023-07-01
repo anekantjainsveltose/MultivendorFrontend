@@ -13,6 +13,7 @@ import {
   Badge,
 } from "reactstrap";
 import axiosConfig from "../../../../axiosConfig";
+
 import { ContextLayout } from "../../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
 import { Edit, Trash2, ChevronDown, Eye } from "react-feather";
@@ -21,24 +22,18 @@ import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../../assets/scss/pages/users.scss";
 import { Route, Link } from "react-router-dom";
 
-class HubList extends React.Component {
+class DepartmentList extends React.Component {
   state = {
-    name: "",
-    mobile: "",
-    email: "",
-    address: "",
-    delivery_zone: "",
-    status: "",
     rowData: [],
     paginationPageSize: 20,
     currenPageSize: "",
     getPageSize: "",
-    // defaultColDef: {
-    //   sortable: true,
-    //   editable: true,
-    //   resizable: true,
-    //   suppressMenu: true,
-    // },
+    defaultColDef: {
+      sortable: true,
+      editable: true,
+      resizable: true,
+      suppressMenu: true,
+    },
     columnDefs: [
       {
         headerName: "S.No",
@@ -48,83 +43,76 @@ class HubList extends React.Component {
         filter: true,
       },
       {
-        headerName: "Hub Name",
-        field: "name",
-        filter: true,
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.name}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Mobile No.",
-        field: "mobile",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
-            </div>
-          );
-        },
-      },
-
-      {
-        headerName: "Email",
-        field: "email",
+        headerName: "Image",
+        field: "image",
         filter: true,
         width: 100,
         cellRendererFramework: (params) => {
           return (
-            <div>
-              <span>{params.data.email}</span>
+            <div className="d-flex align-items-center cursor-pointer">
+              <img
+                className="rounded-circle mr-50"
+                src={params.data?.image}
+                alt="user avatar"
+                height="40"
+                width="40"
+              />
             </div>
           );
         },
       },
       {
-        headerName: "Address",
-        field: "address",
-        filter: true,
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div>
-              <span>{params.data.address}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Delivery Zone",
-        field: "delivery_zone",
+        headerName: "Name",
+        field: "category_name",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return (
-            <div>
-              <span>{params.data.delivery_zone}</span>
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data?.category_name}</span>
             </div>
           );
         },
       },
-
+      {
+        headerName: "Type",
+        field: "type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data?.type}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Featured",
+        field: "feature",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span className="" style={{ textTransform: "uppercase" }}>
+                {params.data?.feature}
+              </span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Status",
         field: "status",
         filter: true,
-        width: 150,
+        width: 100,
         cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "Deactive" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.status}
             </div>
@@ -141,30 +129,29 @@ class HubList extends React.Component {
             <div className="actions cursor-pointer">
               <Route
                 render={({ history }) => (
-                  <Eye
-                    className="mr-50"
-                    size="25px"
-                    color="green"
-                    onClick={() =>
-                      history.push(
-                        `/app/freshlist/hubs/ViewHub/${params.data._id}`
-                      )
-                    }
-                  />
-                )}
-              />
-              <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push(
-                        `/app/freshlist/hubs/editHub/${params.data._id}`
-                      )
-                    }
-                  />
+                  <>
+                    <Eye
+                      className="mr-50"
+                      size="25px"
+                      color="green"
+                      onClick={() =>
+                        history.push(
+                          `/app/freshlist/department/viewDepartment/${params.data._id}`
+                        )
+                      }
+                    />
+
+                    <Edit
+                      className="mr-50"
+                      size="25px"
+                      color="blue"
+                      onClick={() =>
+                        history.push(
+                          `/app/freshlist/department/editDepartment/${params.data._id}`
+                        )
+                      }
+                    />
+                  </>
                 )}
               />
               <Route
@@ -189,15 +176,16 @@ class HubList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("admin/hublist").then((response) => {
+    await axiosConfig.get("/admin/getallcategory").then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
     });
   }
+
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.delete(`/admin/del_hub/${id}`).then(
+    await axiosConfig.delete(`/admin/del_one_category/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -206,7 +194,6 @@ class HubList extends React.Component {
       }
     );
   }
-
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -240,35 +227,20 @@ class HubList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Hub List
+                  Department List
                   </h1>
                 </Col>
-                <Col>
+                {/* <Col>
                   <Button
                     style={{ marginRight: "-22rem" }}
                     className="btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/category/CategoryList")
+                      history.push("/app/freshlist/category/DepartmentList")
                     }
                   >
                     Back
                   </Button>
-                </Col>
-                <Col>
-                  <Route
-                    render={({ history }) => (
-                      <Button
-                        className="btn btn-primary float-right"
-                        color="primary"
-                        onClick={() =>
-                          history.push("/app/freshlist/hubs/AddHub")
-                        }
-                      >
-                        Add Hub
-                      </Button>
-                    )}
-                  />
-                </Col>
+                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -369,4 +341,4 @@ class HubList extends React.Component {
     );
   }
 }
-export default HubList;
+export default DepartmentList;

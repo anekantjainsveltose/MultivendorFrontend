@@ -127,7 +127,9 @@ export class EditEmployee extends Component {
         console.log(response);
         if (response.data.msg === "success") {
           swal("Success!", "You Data IS been Submitted", "success");
-          this.props.history.push("/app/freshlist/employee/employeesList");
+          this.props.history.push(
+            "/app/freshlist/staff/employee/employeesList"
+          );
         }
       })
       .catch((error) => {
@@ -150,7 +152,9 @@ export class EditEmployee extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/employee/employeesList")
+                      history.push(
+                        "/app/freshlist/staff/employee/employeesList"
+                      )
                     }
                   >
                     Back
@@ -192,7 +196,7 @@ export class EditEmployee extends Component {
 
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Image </Label>
+                    <Label>Image </Label>
                     <CustomInput type="file" onChange={this.onChangeHandler1} />
                   </FormGroup>
                 </Col>
@@ -263,7 +267,7 @@ export class EditEmployee extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Update
+                  Update Employee
                 </Button.Ripple>
               </Row>
             </Form>

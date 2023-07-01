@@ -13,7 +13,8 @@ import "../../../../assets/scss/pages/app-ecommerce-shop.scss";
 import "../../../../assets/scss/pages/users.scss";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
-class ViewBrand extends React.Component {
+
+class ViewTransections extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +61,7 @@ class ViewBrand extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  View
+                  View Transection
                 </h1>
               </Col>
               <Col>
@@ -69,7 +70,7 @@ class ViewBrand extends React.Component {
                     <Button
                       className=" btn btn-danger float-right"
                       onClick={() =>
-                        history.push("/app/freshlist/brand/brandList")
+                        history.push("/app/freshlist/transactions/TransectionsList")
                       }
                     >
                       Back
@@ -93,7 +94,7 @@ class ViewBrand extends React.Component {
                     <Col sm="8">
                       <Row className="m-2">
                         <Col>
-                          <h6>Brand Name</h6>
+                          <h6>Name</h6>
                         </Col>
                         <Col>
                           <h6>
@@ -133,4 +134,4 @@ class ViewBrand extends React.Component {
   }
 }
 
-export default ViewBrand;
+export default ViewTransections;

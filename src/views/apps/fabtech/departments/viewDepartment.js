@@ -17,7 +17,7 @@ import { Route } from "react-router-dom";
 import swal from "sweetalert";
 import { CloudLightning } from "react-feather";
 
-export class ViewEmployee extends Component {
+export class ViewDepartment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,7 +91,7 @@ export class ViewEmployee extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                View
+                View Department
               </h1>
             </Col>
             <Col>
@@ -100,7 +100,7 @@ export class ViewEmployee extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/employee/employeesList")
+                      history.push("/app/freshlist/department/departmentList")
                     }
                   >
                     Back
@@ -114,7 +114,7 @@ export class ViewEmployee extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Name: </Label>
+                    <Label>Department Name: </Label>
                     <p style={{ display: "inline-block", marginLeft: "10px" }}>
                       {this.state.category_name}
                     </p>
@@ -128,7 +128,7 @@ export class ViewEmployee extends Component {
                 </Col>
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Image: </Label>
+                    <Label>Department Image: </Label>
                     <img
                       src={this.state.data?.image}
                       style={{
@@ -205,4 +205,4 @@ export class ViewEmployee extends Component {
     );
   }
 }
-export default ViewEmployee;
+export default ViewDepartment;

@@ -13,7 +13,8 @@ import "../../../../assets/scss/pages/app-ecommerce-shop.scss";
 import "../../../../assets/scss/pages/users.scss";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
-class ViewHub extends React.Component {
+
+class ViewInvoice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +61,7 @@ class ViewHub extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  View Hub
+                  View Invoice
                 </h1>
               </Col>
               <Col>
@@ -69,7 +70,7 @@ class ViewHub extends React.Component {
                     <Button
                       className=" btn btn-danger float-right"
                       onClick={() =>
-                        history.push("/app/freshlist/hubs/hubList")
+                        history.push("/app/freshlist/invoices/InvoicesList")
                       }
                     >
                       Back
@@ -84,7 +85,7 @@ class ViewHub extends React.Component {
                   <div className="users-page-view-table">
                     <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
-                        HUB Name :
+                        Invoice Name :
                       </div>
                       <div className="text-truncate">
                         <span>{this.state.data?.name}</span>
@@ -149,4 +150,4 @@ class ViewHub extends React.Component {
   }
 }
 
-export default ViewHub;
+export default ViewInvoice;

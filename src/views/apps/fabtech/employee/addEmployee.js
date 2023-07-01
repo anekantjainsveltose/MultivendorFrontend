@@ -132,10 +132,10 @@ export class AddEmployee extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Category Name</Label>
+                    <Label>Employee Name</Label>
                     <Input
                       type="text"
-                      placeholder="Category Name"
+                      placeholder="Employee Name"
                       name="category_name"
                       value={this.state.category_name}
                       onChange={this.changeHandler}
@@ -160,7 +160,7 @@ export class AddEmployee extends Component {
 
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Category Image </Label>
+                    <Label>Employee Image </Label>
                     <CustomInput type="file" onChange={this.onChangeHandler1} />
                   </FormGroup>
                 </Col>

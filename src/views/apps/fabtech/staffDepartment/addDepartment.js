@@ -15,9 +15,8 @@ import { history } from "../../../../history";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
 import swal from "sweetalert";
-import { CloudLightning } from "react-feather";
 
-export class EditEmployee extends Component {
+export class AddDepartment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,26 +62,6 @@ export class EditEmployee extends Component {
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  componentDidMount() {
-    let { id } = this.props.match.params;
-    axiosConfig
-      .get(`/admin/viewonecategory/${id}`)
-      .then((response) => {
-        console.log(response.data.data);
-        this.setState({
-          data: response.data.data,
-          category_name: response.data.data.category_name,
-          type: response.data.data.type,
-          feature: response.data.data.feature,
-          status: response.data.data.status,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -90,44 +69,33 @@ export class EditEmployee extends Component {
     data.append("type", this.state.type);
     data.append("feature", this.state.feature);
     data.append("status", this.state.status);
-    if (this.state.selectedFile1 !== null) {
-      data.append("image", this.state.selectedFile1, this.state.selectedName1);
-    }
-    if (this.state.selectedFile2 !== null) {
-      data.append(
-        "thumbnail_img",
-        this.state.selectedFile2,
-        this.state.selectedName2
-      );
-    }
-    if (this.state.selectedFile3 !== null) {
-      data.append(
-        "web_banner",
-        this.state.selectedFile3,
-        this.state.selectedName3
-      );
-    }
-    if (this.state.selectedFile4 !== null) {
-      data.append(
-        "app_banner",
-        this.state.selectedFile4,
-        this.state.selectedName4
-      );
-    }
+    data.append("image", this.state.selectedFile1, this.state.selectedName1);
+    data.append(
+      "thumbnail_img",
+      this.state.selectedFile2,
+      this.state.selectedName2
+    );
+    data.append(
+      "web_banner",
+      this.state.selectedFile3,
+      this.state.selectedName3
+    );
+    data.append(
+      "app_banner",
+      this.state.selectedFile4,
+      this.state.selectedName4
+    );
 
     for (var value of data.values()) {
       console.log(value);
     }
-
-    let { id } = this.props.match.params;
-    console.log(id);
     axiosConfig
-      .post(`/admin/edit_category/${id}`, data)
+      .post(`/admin/AddDepartment`, data)
       .then((response) => {
         console.log(response);
         if (response.data.msg === "success") {
           swal("Success!", "You Data IS been Submitted", "success");
-          this.props.history.push("/app/freshlist/employee/employeesList");
+          this.props.history.push("/app/freshlist/staff/department/departmentList");
         }
       })
       .catch((error) => {
@@ -141,7 +109,7 @@ export class EditEmployee extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Employee
+                Add Department
               </h1>
             </Col>
             <Col>
@@ -149,9 +117,9 @@ export class EditEmployee extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/freshlist/employee/employeesList")
-                    }
+                    onClick={() => {
+                      history.push("/app/freshlist/staff/department/departmentList");
+                    }}
                   >
                     Back
                   </Button>
@@ -164,10 +132,10 @@ export class EditEmployee extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Name</Label>
+                    <Label>Department Name</Label>
                     <Input
                       type="text"
-                      placeholder="Employee Name"
+                      placeholder="Department Name"
                       name="category_name"
                       value={this.state.category_name}
                       onChange={this.changeHandler}
@@ -192,7 +160,7 @@ export class EditEmployee extends Component {
 
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Image </Label>
+                    <Label>Department Image </Label>
                     <CustomInput type="file" onChange={this.onChangeHandler1} />
                   </FormGroup>
                 </Col>
@@ -263,7 +231,7 @@ export class EditEmployee extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Update
+                  Add Department
                 </Button.Ripple>
               </Row>
             </Form>
@@ -273,4 +241,4 @@ export class EditEmployee extends Component {
     );
   }
 }
-export default EditEmployee;
+export default AddDepartment;

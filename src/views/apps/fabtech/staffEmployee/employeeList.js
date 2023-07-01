@@ -10,9 +10,10 @@ import {
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
+  Badge,
 } from "reactstrap";
 import axiosConfig from "../../../../axiosConfig";
-import axios from "axios";
+
 import { ContextLayout } from "../../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
 import { Edit, Trash2, ChevronDown, Eye } from "react-feather";
@@ -21,7 +22,7 @@ import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../../assets/scss/pages/users.scss";
 import { Route, Link } from "react-router-dom";
 
-class BrandList extends React.Component {
+class EmployeeList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -61,27 +62,42 @@ class BrandList extends React.Component {
         },
       },
       {
-        headerName: "Brand Name",
-        field: "brand_name",
+        headerName: "Name",
+        field: "category_name",
         filter: true,
-        width: 100,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
-            <div>
-              <span>{params.data?.brand_name}</span>
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data?.category_name}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Description",
-        field: "desc",
+        headerName: "Type",
+        field: "type",
         filter: true,
-        width: 100,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data?.desc}</span>
+              <span>{params.data?.type}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Featured",
+        field: "feature",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span className="" style={{ textTransform: "uppercase" }}>
+                {params.data?.feature}
+              </span>
             </div>
           );
         },
@@ -90,7 +106,7 @@ class BrandList extends React.Component {
         headerName: "Status",
         field: "status",
         filter: true,
-        width: 150,
+        width: 100,
         cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
@@ -120,31 +136,36 @@ class BrandList extends React.Component {
                       color="green"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/brand/viewBrand/${params.data._id}`
+                          `/app/freshlist/staff/employee/viewEmployee/${params.data._id}`
                         )
                       }
                     />
+
                     <Edit
                       className="mr-50"
                       size="25px"
                       color="blue"
                       onClick={() =>
                         history.push(
-                          `/app/freshlist/brand/editBrand/${params.data._id}`
+                          `/app/freshlist/staff/employee/editEmployee/${params.data._id}`
                         )
                       }
                     />
-                    <Trash2
-                      className="mr-50"
-                      size="25px"
-                      color="red"
-                      onClick={() => {
-                        let selectedData = this.gridApi.getSelectedRows();
-                        this.runthisfunction(params.data._id);
-                        this.gridApi.updateRowData({ remove: selectedData });
-                      }}
-                    />
                   </>
+                )}
+              />
+              <Route
+                render={({ history }) => (
+                  <Trash2
+                    className="mr-50"
+                    size="25px"
+                    color="red"
+                    onClick={() => {
+                      let selectedData = this.gridApi.getSelectedRows();
+                      this.runthisfunction(params.data._id);
+                      this.gridApi.updateRowData({ remove: selectedData });
+                    }}
+                  />
                 )}
               />
             </div>
@@ -155,7 +176,7 @@ class BrandList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/admin/brandlist").then((response) => {
+    await axiosConfig.get("/admin/getallcategory").then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -164,7 +185,7 @@ class BrandList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.delete(`/admin/del_brand/${id}`).then(
+    await axiosConfig.delete(`/admin/del_one_category/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -206,24 +227,20 @@ class BrandList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Brand List
+                    Employee List
                   </h1>
                 </Col>
-                <Col>
-                  <Route
-                    render={({ history }) => (
-                      <Button
-                        className="btn float-right"
-                        color="primary"
-                        onClick={() =>
-                          history.push("/app/freshlist/brand/addBrand")
-                        }
-                      >
-                        Add New
-                      </Button>
-                    )}
-                  />
-                </Col>
+                {/* <Col>
+                  <Button
+                    style={{ marginRight: "-22rem" }}
+                    className="btn btn-danger float-right"
+                    onClick={() =>
+                      history.push("/app/freshlist/category/EmployeeList")
+                    }
+                  >
+                    Back
+                  </Button>
+                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -324,4 +341,4 @@ class BrandList extends React.Component {
     );
   }
 }
-export default BrandList;
+export default EmployeeList;

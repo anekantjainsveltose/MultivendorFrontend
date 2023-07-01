@@ -17,7 +17,7 @@ import { history } from "../../../../history";
 import { Route } from "react-router-dom";
 import swal from "sweetalert";
 
-export default class EditHub extends Component {
+export default class EditInvoice extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,32 +72,19 @@ export default class EditHub extends Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col sm="12">
-            <div>
-              <Breadcrumb listTag="div">
-                <BreadcrumbItem href="/analyticsDashboard" tag="a">
-                  Home
-                </BreadcrumbItem>
-                <BreadcrumbItem href="/app/freshlist/hubs/hubList" tag="a">
-                  Customer List
-                </BreadcrumbItem>
-                <BreadcrumbItem active>Edit Customer List</BreadcrumbItem>
-              </Breadcrumb>
-            </div>
-          </Col>
-        </Row>
         <Card>
           <Row className="m-2">
             <Col>
-              <h1 className="float-left">Edit Resource List</h1>
+              <h1 className="float-left">Edit Invoice</h1>
             </Col>
             <Col>
               <Route
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/freshlist/hubs/hubList")}
+                    onClick={() =>
+                      history.push("/app/freshlist/invoices/InvoicesList")
+                    }
                   >
                     Back
                   </Button>
@@ -111,10 +98,10 @@ export default class EditHub extends Component {
               <Row>
                 <Col lg="5" md="5" className="ml-2">
                   <FormGroup>
-                    <Label>Hub Name</Label>
+                    <Label>Invoice Name</Label>
                     <Input
                       type="text"
-                      placeholder="Hub Name"
+                      placeholder="Invoice Name"
                       name="username"
                       value={this.state.username}
                       onChange={this.changeHandler}
@@ -191,7 +178,7 @@ export default class EditHub extends Component {
                     type="submit"
                     className="mr-2 mb-1"
                   >
-                    Update
+                    Update Invoice
                   </Button.Ripple>
                 </Col>
               </Row>

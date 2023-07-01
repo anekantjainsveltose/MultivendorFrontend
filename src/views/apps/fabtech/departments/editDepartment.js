@@ -17,7 +17,7 @@ import { Route } from "react-router-dom";
 import swal from "sweetalert";
 import { CloudLightning } from "react-feather";
 
-export class EditEmployee extends Component {
+export class EditDepartment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,7 +127,7 @@ export class EditEmployee extends Component {
         console.log(response);
         if (response.data.msg === "success") {
           swal("Success!", "You Data IS been Submitted", "success");
-          this.props.history.push("/app/freshlist/employee/employeesList");
+          this.props.history.push("/app/freshlist/department/departmentList");
         }
       })
       .catch((error) => {
@@ -141,7 +141,7 @@ export class EditEmployee extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Employee
+                Edit Department
               </h1>
             </Col>
             <Col>
@@ -150,7 +150,7 @@ export class EditEmployee extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/employee/employeesList")
+                      history.push("/app/freshlist/department/departmentList")
                     }
                   >
                     Back
@@ -164,10 +164,10 @@ export class EditEmployee extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Name</Label>
+                    <Label>Department Name</Label>
                     <Input
                       type="text"
-                      placeholder="Employee Name"
+                      placeholder="Department Name"
                       name="category_name"
                       value={this.state.category_name}
                       onChange={this.changeHandler}
@@ -192,7 +192,7 @@ export class EditEmployee extends Component {
 
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Image </Label>
+                    <Label>Department Image </Label>
                     <CustomInput type="file" onChange={this.onChangeHandler1} />
                   </FormGroup>
                 </Col>
@@ -263,7 +263,7 @@ export class EditEmployee extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Update
+                  Update Department
                 </Button.Ripple>
               </Row>
             </Form>
@@ -273,4 +273,4 @@ export class EditEmployee extends Component {
     );
   }
 }
-export default EditEmployee;
+export default EditDepartment;

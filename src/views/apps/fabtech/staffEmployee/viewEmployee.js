@@ -91,7 +91,7 @@ export class ViewEmployee extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                View
+                View Employee
               </h1>
             </Col>
             <Col>
@@ -100,7 +100,9 @@ export class ViewEmployee extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/employee/employeesList")
+                      history.push(
+                        "/app/freshlist/staff/employee/employeesList"
+                      )
                     }
                   >
                     Back
@@ -128,7 +130,7 @@ export class ViewEmployee extends Component {
                 </Col>
                 <Col lg="6" md="6">
                   <FormGroup>
-                    <Label>Employee Image: </Label>
+                    <Label>Image: </Label>
                     <img
                       src={this.state.data?.image}
                       style={{

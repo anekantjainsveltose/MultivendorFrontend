@@ -15,7 +15,7 @@ import { history } from "../../../../history";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
 
-export class EditBrand extends Component {
+export class AddAttendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,51 +33,32 @@ export class EditBrand extends Component {
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-
   handleChange = (e) => {
     this.setState({ status: e.target.value });
   };
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  componentDidMount() {
-    // console.log(this.props.match.params);
-    let { id } = this.props.match.params;
-    axiosConfig
-      .get(`/admin/viewone_brand/${id}`)
-      .then((response) => {
-        console.log(response.data.data);
-        this.setState({
-          data: response.data.data,
-          name: response.data.data.brand_name,
-          desc: response.data.data.desc,
-          status: response.data.data.status,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("brand_name", this.state.name);
     data.append("desc", this.state.desc);
     data.append("status", this.state.status);
-    if (this.state.selectedFile !== null) {
-      data.append("image", this.state.selectedFile, this.state.selectedName);
-    }
+    data.append("image", this.state.selectedFile, this.state.selectedName);
+
     for (var value of data.values()) {
       console.log(value);
     }
-    let { id } = this.props.match.params;
+    for (var key of data.keys()) {
+      console.log(key);
+    }
+
     axiosConfig
-      .post(`/admin/edit_brand/${id}`, data)
+      .post(`/admin/addbrand`, data)
       .then((response) => {
         console.log(response);
-        this.props.history.push("/app/freshlist/brand/brandList");
+        this.props.history.push("/app/freshlist/attendance/attendanceList");
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +71,7 @@ export class EditBrand extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Brand
+                Add Attendance
               </h1>
             </Col>
             <Col>
@@ -99,7 +80,7 @@ export class EditBrand extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/brand/brandList")
+                      history.push("/app/freshlist/attendance/attendanceList")
                     }
                   >
                     Back
@@ -112,7 +93,7 @@ export class EditBrand extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Brand Name</Label>
+                  <Label>Name</Label>
                   <Input
                     type="text"
                     placeholder="Branch Name"
@@ -133,7 +114,7 @@ export class EditBrand extends Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Brand Image</Label>
+                  <Label>Image</Label>
                   <CustomInput
                     type="file"
                     onChange={this.onChangeHandler}
@@ -169,7 +150,7 @@ export class EditBrand extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Update Brand
+                  Add Attendance
                 </Button.Ripple>
               </Row>
             </Form>
@@ -179,4 +160,4 @@ export class EditBrand extends Component {
     );
   }
 }
-export default EditBrand;
+export default AddAttendance;

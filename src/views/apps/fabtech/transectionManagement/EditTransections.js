@@ -15,7 +15,7 @@ import { history } from "../../../../history";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
 
-export class AddBrand extends Component {
+export class EditTransections extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,32 +33,51 @@ export class AddBrand extends Component {
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
+
   handleChange = (e) => {
     this.setState({ status: e.target.value });
   };
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  componentDidMount() {
+    // console.log(this.props.match.params);
+    let { id } = this.props.match.params;
+    axiosConfig
+      .get(`/admin/viewone_brand/${id}`)
+      .then((response) => {
+        console.log(response.data.data);
+        this.setState({
+          data: response.data.data,
+          name: response.data.data.brand_name,
+          desc: response.data.data.desc,
+          status: response.data.data.status,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("brand_name", this.state.name);
     data.append("desc", this.state.desc);
     data.append("status", this.state.status);
-    data.append("image", this.state.selectedFile, this.state.selectedName);
-
+    if (this.state.selectedFile !== null) {
+      data.append("image", this.state.selectedFile, this.state.selectedName);
+    }
     for (var value of data.values()) {
       console.log(value);
     }
-    for (var key of data.keys()) {
-      console.log(key);
-    }
-
+    let { id } = this.props.match.params;
     axiosConfig
-      .post(`/admin/addbrand`, data)
+      .post(`/admin/edit_brand/${id}`, data)
       .then((response) => {
         console.log(response);
-        this.props.history.push("/app/freshlist/brand/brandList");
+        this.props.history.push("/app/freshlist/transactions/TransectionsList");
       })
       .catch((error) => {
         console.log(error);
@@ -71,7 +90,7 @@ export class AddBrand extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Brand
+                Edit Transection
               </h1>
             </Col>
             <Col>
@@ -80,7 +99,9 @@ export class AddBrand extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/freshlist/brand/brandList")
+                      history.push(
+                        "/app/freshlist/transactions/TransectionsList"
+                      )
                     }
                   >
                     Back
@@ -93,7 +114,7 @@ export class AddBrand extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Brand Name</Label>
+                  <Label>Name</Label>
                   <Input
                     type="text"
                     placeholder="Branch Name"
@@ -114,7 +135,7 @@ export class AddBrand extends Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Brand Image</Label>
+                  <Label>Image</Label>
                   <CustomInput
                     type="file"
                     onChange={this.onChangeHandler}
@@ -150,7 +171,7 @@ export class AddBrand extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Add
+                  Update Transection
                 </Button.Ripple>
               </Row>
             </Form>
@@ -160,4 +181,4 @@ export class AddBrand extends Component {
     );
   }
 }
-export default AddBrand;
+export default EditTransections;

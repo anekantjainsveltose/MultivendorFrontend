@@ -15,7 +15,7 @@ import { history } from "../../../../history";
 import axiosConfig from "../../../../axiosConfig";
 import { Route } from "react-router-dom";
 
-const AddHub = (props) => {
+const AddInvoice = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +36,7 @@ const AddHub = (props) => {
       .post("/admin/addhub", formData)
       .then((response) => {
         console.log("response", response.data.data);
-        props.history.push("/app/freshlist/hubs/hubList");
+        props.history.push("/app/freshlist/invoices/InvoicesList");
       })
       .catch((error) => {
         console.log(error);
@@ -49,7 +49,7 @@ const AddHub = (props) => {
         <Row className="m-2">
           <Col>
             <h1 col-sm-6 className="float-left">
-              Add Hub
+              Add Invoice
             </h1>
           </Col>
           <Col>
@@ -57,7 +57,9 @@ const AddHub = (props) => {
               render={({ history }) => (
                 <Button
                   className=" btn btn-danger float-right"
-                  onClick={() => history.push("/app/freshlist/hubs/hubList")}
+                  onClick={() =>
+                    history.push("/app/freshlist/invoices/InvoicesList")
+                  }
                 >
                   Back
                 </Button>
@@ -70,10 +72,10 @@ const AddHub = (props) => {
             <Row className="mb-2">
               <Col lg="6" md="6">
                 <FormGroup>
-                  <Label>Hub Name</Label>
+                  <Label>Invoice Name</Label>
                   <Input
                     type="text"
-                    placeholder="Hub Name"
+                    placeholder="Invoice Name"
                     name="name"
                     value={formData.name}
                     onChange={changeHandler}
@@ -184,7 +186,7 @@ const AddHub = (props) => {
                   <Label>Delivery Zone</Label>
                   <Input
                     type="text"
-                    placeholder=""
+                    placeholder="Delivery Zone"
                     name="delivery_zone"
                     value={formData.delivery_zone}
                     onChange={changeHandler}
@@ -218,7 +220,7 @@ const AddHub = (props) => {
               <Route
                 render={({ history }) => (
                   <Button color="primary" type="submit" className="mr-1 mb-1">
-                    Add Hub
+                    Add Invoice
                   </Button>
                 )}
               />
@@ -230,4 +232,4 @@ const AddHub = (props) => {
   );
 };
 
-export default AddHub;
+export default AddInvoice;
