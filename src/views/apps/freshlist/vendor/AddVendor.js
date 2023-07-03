@@ -83,11 +83,9 @@ export class AddVendor extends Component {
     this.setState({ selectedName6: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
-
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
   submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -164,7 +162,7 @@ export class AddVendor extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add New Supplier
+                Create Supplier
               </h1>
             </Col>
             <Col>
@@ -223,13 +221,13 @@ export class AddVendor extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Door Number</Label>
+                  <Label>Company</Label>
                   <Input
                     required
-                    type="text"
-                    name="door_number"
-                    placeholder="Door Number"
-                    value={this.state.door_number}
+                    type="email"
+                    name="email"
+                    placeholder="Enter Company"
+                    value={this.state.email}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -277,8 +275,19 @@ export class AddVendor extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                <Col lg="6" md="6" className="mb-1">
+                  <Label>Tax Id</Label>
+                  <Input
+                    required
+                    type="tel"
+                    name="pincode"
+                    placeholder="Tax Id"
+                    value={this.state.pincode}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <h5>Service Information</h5>
               </Row>
               <Row className="mb-2 mt-2">
@@ -315,7 +324,7 @@ export class AddVendor extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              </Row>
+              </Row> */}
               <Row>
                 <h5> Document Details</h5>
               </Row>
@@ -339,7 +348,7 @@ export class AddVendor extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-1">
+                {/* <Col lg="6" md="6" className="mb-1">
                   <Label>Aadhar Front Image</Label>
                   <CustomInput
                     required
@@ -433,7 +442,7 @@ export class AddVendor extends Component {
                     type="file"
                     onChange={this.onChangeHandler6}
                   />
-                </Col>
+                </Col> */}
               </Row>
               <Row style={{ float: "center" }}>
                 <Button.Ripple

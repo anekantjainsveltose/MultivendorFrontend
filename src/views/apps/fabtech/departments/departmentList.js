@@ -227,8 +227,25 @@ class DepartmentList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                  Department List
+                    Department List
                   </h1>
+                </Col>
+                <Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className="float-right"
+                        color="primary"
+                        onClick={() =>
+                          history.push(
+                            "/app/freshlist/department/addDepartment"
+                          )
+                        }
+                      >
+                        Add New
+                      </Button>
+                    )}
+                  />
                 </Col>
                 {/* <Col>
                   <Button

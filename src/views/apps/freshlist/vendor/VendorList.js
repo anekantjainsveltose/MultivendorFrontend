@@ -42,7 +42,7 @@ class VendorList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width: 90,
         filter: true,
       },
 
@@ -66,7 +66,7 @@ class VendorList extends React.Component {
         headerName: "Mobile",
         field: "mobile",
         filter: true,
-        width: 100,
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -75,19 +75,19 @@ class VendorList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Door Number",
-        field: "doorNo",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params?.data?.door_number}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Door Number",
+      //   field: "doorNo",
+      //   filter: true,
+      //   width: 100,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params?.data?.door_number}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "Street",
         field: "street",
@@ -141,10 +141,10 @@ class VendorList extends React.Component {
         },
       },
       {
-        headerName: "Vendor Image",
+        headerName: "Supplier Image",
         field: "vendoor_img",
         filter: true,
-        width: 100,
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -159,24 +159,23 @@ class VendorList extends React.Component {
           );
         },
       },
-
-      {
-        headerName: "Status",
-        field: "status",
-        filter: true,
-        width: 100,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params?.data?.status}
-            </div>
-          ) : params.value === "false" ? (
-            <div className="badge badge-pill badge-danger">
-              {params?.data?.status}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "Status",
+      //   field: "status",
+      //   filter: true,
+      //   width: 100,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "true" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params?.data?.status}
+      //       </div>
+      //     ) : params.value === "false" ? (
+      //       <div className="badge badge-pill badge-danger">
+      //         {params?.data?.status}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "Actions",
         field: "Actions",

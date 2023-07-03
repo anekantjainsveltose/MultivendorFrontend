@@ -266,12 +266,12 @@ export class EditVendor extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-1">
-                  <Label>Door Number</Label>
+                  <Label>Company</Label>
                   <Input
-                    type="text"
-                    name="door_number"
-                    placeholder="Door Number"
-                    value={this.state.door_number}
+                    type="email"
+                    name="email"
+                    placeholder="Enter Company"
+                    value={"Company"}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -316,7 +316,7 @@ export class EditVendor extends Component {
                   ></Input>
                 </Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <h5>Service Information</h5>
               </Row>
               <Row className="mb-2 mt-2">
@@ -350,7 +350,7 @@ export class EditVendor extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              </Row>
+              </Row> */}
               <Row>
                 <h5> Document Details</h5>
               </Row>
@@ -369,7 +369,7 @@ export class EditVendor extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-1">
+                {/* <Col lg="6" md="6" className="mb-1">
                   <Label>Aadhar Front Image</Label>
                   <CustomInput type="file" onChange={this.onChangeHandler2} />
                 </Col>
@@ -438,7 +438,7 @@ export class EditVendor extends Component {
                 <Col lg="6" md="6" className="mb-1">
                   <Label>Cancelled Cheque Image</Label>
                   <CustomInput type="file" onChange={this.onChangeHandler6} />
-                </Col>
+                </Col> */}
               </Row>
               <Row style={{ float: "center" }}>
                 <Button.Ripple

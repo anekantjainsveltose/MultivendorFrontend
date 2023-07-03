@@ -162,19 +162,33 @@ export class EditWarehouse extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6">
+                <Col lg="12" md="12">
                   <FormGroup>
-                    <Label>Category Name</Label>
+                    <Label>WareHouse Name</Label>
                     <Input
                       type="text"
                       placeholder="Category Name"
                       name="category_name"
-                      value={this.state.category_name}
+                      // value={this.state.category_name}
+                      value={"WareHouse Name"}
                       onChange={this.changeHandler}
                     />
                   </FormGroup>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                <Col lg="12" md="12">
+                  <FormGroup>
+                    <Label>Description</Label>
+                    <Input
+                      type="text"
+                      placeholder="Category Name"
+                      name="category_name"
+                      // value={this.state.category_name}
+                      value={"I am WareHouse Description"}
+                      onChange={this.changeHandler}
+                    />
+                  </FormGroup>
+                </Col>
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <CustomInput
                     type="select"
@@ -189,21 +203,18 @@ export class EditWarehouse extends Component {
                     <option value="egg">Egg only</option>
                   </CustomInput>
                 </Col>
-
                 <Col lg="6" md="6">
                   <FormGroup>
                     <Label>Category Image </Label>
                     <CustomInput type="file" onChange={this.onChangeHandler1} />
                   </FormGroup>
                 </Col>
-
                 <Col lg="6" md="6">
                   <FormGroup>
                     <Label>Thumbnail</Label>
                     <CustomInput type="file" onChange={this.onChangeHandler2} />
                   </FormGroup>
                 </Col>
-
                 <Col lg="6" md="6">
                   <FormGroup>
                     <Label>Web Banner </Label>
@@ -216,7 +227,6 @@ export class EditWarehouse extends Component {
                     <CustomInput type="file" onChange={this.onChangeHandler4} />
                   </FormGroup>
                 </Col>
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Feature</Label>
                   <CustomInput
@@ -231,7 +241,6 @@ export class EditWarehouse extends Component {
                     <option value="no">No</option>
                   </CustomInput>
                 </Col>
-
                 <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
                   <Label className="mb-0">Status</Label>
                   <div
@@ -254,7 +263,7 @@ export class EditWarehouse extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
-                </Col>
+                </Col> */}
               </Row>
 
               <Row>

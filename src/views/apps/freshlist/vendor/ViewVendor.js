@@ -149,7 +149,8 @@ class ViewVendor extends React.Component {
                                 className="text-black mb-1"
                                 style={{ fontWeight: "bold" }}
                               >
-                                Door No. : {this.state.data?.door_number}
+                                Company : Company
+                                {/* {this.state.data?.door_number} */}
                               </MDBCardText>
                               <MDBCardText
                                 className="text-black mb-1"
@@ -169,7 +170,7 @@ class ViewVendor extends React.Component {
                               >
                                 Pin Code : {this.state.data?.pincode}
                               </MDBCardText>
-                              <div className="d-flex justify-content-between align-items-center mb-2 mt-4">
+                              {/* <div className="d-flex justify-content-between align-items-center mb-2 mt-4">
                                 <MDBCardText className="lead fw-normal mb-0">
                                   Service Information
                                 </MDBCardText>
@@ -193,7 +194,7 @@ class ViewVendor extends React.Component {
                               >
                                 Service PinCode :{" "}
                                 {this.state.data?.service_pincode}
-                              </MDBCardText>
+                              </MDBCardText> */}
                               <div className="d-flex justify-content-between align-items-center mb-2 mt-4">
                                 <MDBCardText className="lead fw-normal mb-0">
                                   Account Information
@@ -205,7 +206,7 @@ class ViewVendor extends React.Component {
                               >
                                 Aadhar Number : {this.state.data?.adhar_no}
                               </MDBCardText>
-                              <MDBCardText
+                              {/* <MDBCardText
                                 className="text-black mb-1"
                                 style={{ fontWeight: "bold" }}
                               >
@@ -234,7 +235,7 @@ class ViewVendor extends React.Component {
                                 style={{ fontWeight: "bold" }}
                               >
                                 IFSC Number : {this.state.data?.ifsc_code}
-                              </MDBCardText>
+                              </MDBCardText> */}
                             </div>
                           </div>
                           <div className="d-flex justify-content-between align-items-center mb-4">
@@ -242,7 +243,7 @@ class ViewVendor extends React.Component {
                               Document Photos
                             </MDBCardText>
                           </div>
-                          <MDBRow>
+                          {/* <MDBRow>
                             <MDBCol className="mb-2">
                               <MDBCardImage
                                 src={this.state.data?.adhar_img_front}
@@ -293,7 +294,7 @@ class ViewVendor extends React.Component {
                                 }}
                               />
                             </MDBCol>
-                          </MDBRow>
+                          </MDBRow> */}
                           <MDBRow className="g-2">
                             <MDBCol className="mb-2">
                               <MDBCardImage

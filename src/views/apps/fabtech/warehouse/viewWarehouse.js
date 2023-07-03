@@ -112,15 +112,25 @@ export class ViewWarehouse extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6">
+                <Col lg="12" md="12">
                   <FormGroup>
-                    <Label>Category Name: </Label>
+                    <Label>WareHouse Name: </Label>
                     <p style={{ display: "inline-block", marginLeft: "10px" }}>
-                      {this.state.category_name}
+                      {/* {this.state.category_name} */}
+                      WareHouse Name
                     </p>
                   </FormGroup>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                <Col lg="12" md="12">
+                  <FormGroup>
+                    <Label>Description: </Label>
+                    <p style={{ display: "inline-block", marginLeft: "10px" }}>
+                      {/* {this.state.category_name} */}I am WareHouse
+                      Description
+                    </p>
+                  </FormGroup>
+                </Col>
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Type:</Label>
                   <p style={{ display: "inline-block", marginLeft: "10px" }}>
                     {this.state.type}
@@ -154,7 +164,6 @@ export class ViewWarehouse extends Component {
                     />
                   </FormGroup>
                 </Col>
-
                 <Col lg="6" md="6">
                   <FormGroup>
                     <Label>Web Banner: </Label>
@@ -183,20 +192,18 @@ export class ViewWarehouse extends Component {
                     />
                   </FormGroup>
                 </Col>
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Feature:</Label>
                   <p style={{ display: "inline-block", marginLeft: "10px" }}>
                     {this.state.feature}
                   </p>
                 </Col>
-
                 <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
                   <Label className="mb-0">Status:</Label>
                   <p style={{ display: "inline-block", marginLeft: "10px" }}>
                     {this.state.status}
                   </p>
-                </Col>
+                </Col> */}
               </Row>
             </Form>
           </CardBody>

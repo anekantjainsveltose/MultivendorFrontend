@@ -230,6 +230,21 @@ class EmployeeList extends React.Component {
                     Employee List
                   </h1>
                 </Col>
+                <Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className="float-right"
+                        color="primary"
+                        onClick={() =>
+                          history.push("/app/freshlist/employee/addEmployee")
+                        }
+                      >
+                        Add New
+                      </Button>
+                    )}
+                  />
+                </Col>
                 {/* <Col>
                   <Button
                     style={{ marginRight: "-22rem" }}

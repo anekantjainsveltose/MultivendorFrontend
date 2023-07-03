@@ -466,6 +466,68 @@ const ViewHoliday = lazy(() =>
   import("./views/apps/fabtech/holidayLeave/viewHoliday")
 );
 
+// Role
+const RoleList = lazy(() => import("./views/apps/fabtech/roles/RoleList"));
+const AddRole = lazy(() => import("./views/apps/fabtech/roles/AddRole"));
+const EditRole = lazy(() => import("./views/apps/fabtech/roles/EditRole"));
+const ViewRole = lazy(() => import("./views/apps/fabtech/roles/ViewRole"));
+
+// Permissions
+const PermissionList = lazy(() =>
+  import("./views/apps/fabtech/permissions/PermissionList")
+);
+const AddPermission = lazy(() =>
+  import("./views/apps/fabtech/permissions/AddPermissions")
+);
+const EditPermission = lazy(() =>
+  import("./views/apps/fabtech/permissions/EditPermission")
+);
+const ViewPermission = lazy(() =>
+  import("./views/apps/fabtech/permissions/ViewPermissions")
+);
+
+// Stock Returns
+const StockReturnList = lazy(() =>
+  import("./views/apps/fabtech/stockReturn/StockReturnLIst")
+);
+const AddStockReturns = lazy(() =>
+  import("./views/apps/fabtech/stockReturn/AddStockReturns")
+);
+const EditStockReturn = lazy(() =>
+  import("./views/apps/fabtech/stockReturn/EditStockReturn")
+);
+const ViewStockReturn = lazy(() =>
+  import("./views/apps/fabtech/stockReturn/ViewStockReturn")
+);
+
+// Stock Transfer
+const StockTransferList = lazy(() =>
+  import("./views/apps/fabtech/StockTransfer/StockTransferList")
+);
+const AddStockTransfer = lazy(() =>
+  import("./views/apps/fabtech/StockTransfer/AddStockTransfer")
+);
+const EditStockTransfer = lazy(() =>
+  import("./views/apps/fabtech/StockTransfer/EditStockTransfer")
+);
+const ViewStockTransfer = lazy(() =>
+  import("./views/apps/fabtech/StockTransfer/ViewStockTransfer")
+);
+
+// Stock Returns Customers
+const StockReturnListcustomer = lazy(() =>
+  import("./views/apps/fabtech/stockReturnCustomer/StockReturnLIst")
+);
+const AddStockReturnscustomer = lazy(() =>
+  import("./views/apps/fabtech/stockReturnCustomer/AddStockReturns")
+);
+const EditStockReturncustomer = lazy(() =>
+  import("./views/apps/fabtech/stockReturnCustomer/EditStockReturn")
+);
+const ViewStockReturncustomer = lazy(() =>
+  import("./views/apps/fabtech/stockReturnCustomer/ViewStockReturn")
+);
+
 // Product Attributes
 
 // Batch
@@ -1050,6 +1112,34 @@ class AppRouter extends React.Component {
             path="/app/freshlist/attendance/ViewAttedance/:id"
             component={ViewAttedance}
           />
+          {/* Roles */}
+          <AppRoute path="/app/freshlist/role/RoleList" component={RoleList} />
+          <AppRoute path="/app/freshlist/role/AddRole" component={AddRole} />
+          <AppRoute
+            path="/app/freshlist/role/EditRole/:id"
+            component={EditRole}
+          />
+          <AppRoute
+            path="/app/freshlist/role/ViewRole/:id"
+            component={ViewRole}
+          />
+          {/* Permissions */}
+          <AppRoute
+            path="/app/freshlist/permission/PermissionList"
+            component={PermissionList}
+          />
+          <AppRoute
+            path="/app/freshlist/permission/AddPermission"
+            component={AddPermission}
+          />
+          <AppRoute
+            path="/app/freshlist/permission/EditPermission/:id"
+            component={EditPermission}
+          />
+          <AppRoute
+            path="/app/freshlist/permission/EditPermission/:id"
+            component={ViewPermission}
+          />
           {/* Holiday */}
           <AppRoute
             path="/app/freshlist/holiday/holidayList"
@@ -1070,6 +1160,57 @@ class AppRouter extends React.Component {
           <AppRoute
             path="/ecommerce-dashboard"
             component={ecommerceDashboard}
+          />
+          {/* Stock Returns */}
+          <AppRoute
+            path="/app/freshlist/stock-returns/AddStockReturn"
+            component={AddStockReturns}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/StockReturnList"
+            component={StockReturnList}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/ViewStockReturn/:id"
+            component={ViewStockReturn}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/EditStockReturn"
+            component={EditStockReturn}
+          />
+          {/* Stock Transfer */}
+          <AppRoute
+            path="/app/freshlist/stock-transfer/AddStockTransfer"
+            component={AddStockTransfer}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-transfer/StockTransferList"
+            component={StockTransferList}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-transfer/ViewStockTransfer/:id"
+            component={ViewStockTransfer}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-transfer/EditStockTransfer"
+            component={EditStockTransfer}
+          />
+          {/* Stock Returns Customer */}
+          <AppRoute
+            path="/app/freshlist/stock-returns/customer/AddStockReturn"
+            component={AddStockReturnscustomer}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/customer/StockReturnList"
+            component={StockReturnListcustomer}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/customer/ViewStockReturn/:id"
+            component={ViewStockReturncustomer}
+          />
+          <AppRoute
+            path="/app/freshlist/stock-returns/customer/EditStockReturn"
+            component={EditStockReturncustomer}
           />
           {/* Customer */}
           <AppRoute

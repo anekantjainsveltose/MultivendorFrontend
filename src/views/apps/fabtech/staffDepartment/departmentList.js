@@ -230,17 +230,21 @@ class DepartmentList extends React.Component {
                   Department List
                   </h1>
                 </Col>
-                {/* <Col>
-                  <Button
-                    style={{ marginRight: "-22rem" }}
-                    className="btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/freshlist/category/DepartmentList")
-                    }
-                  >
-                    Back
-                  </Button>
-                </Col> */}
+                <Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className="float-right"
+                        color="primary"
+                        onClick={() =>
+                          history.push("/app/freshlist/staff/department/addDepartment")
+                        }
+                      >
+                        Add New
+                      </Button>
+                    )}
+                  />
+                </Col>
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (

@@ -130,98 +130,33 @@ export class AddWarehouse extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6">
+                <Col lg="12" md="12">
                   <FormGroup>
-                    <Label>Category Name</Label>
+                    <Label style={{ marginBottom: "2px" }}>
+                      WareHouse Name
+                    </Label>
                     <Input
                       type="text"
-                      placeholder="Category Name"
+                      placeholder="WareHouse Name"
                       name="category_name"
                       value={this.state.category_name}
                       onChange={this.changeHandler}
                     />
                   </FormGroup>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Type</Label>
-                  <CustomInput
-                    type="select"
-                    placeholder="Select Type"
-                    name="type"
-                    value={this.state.type}
-                    onChange={this.changeHandler}
-                  >
-                    <option>---Select---</option>
-                    <option value="veg">Veg</option>
-                    <option value="nonveg">Non-Veg</option>
-                    <option value="egg">Egg only</option>
-                  </CustomInput>
-                </Col>
-
-                <Col lg="6" md="6">
+                <Col lg="12" md="12">
                   <FormGroup>
-                    <Label>Category Image </Label>
-                    <CustomInput type="file" onChange={this.onChangeHandler1} />
-                  </FormGroup>
-                </Col>
-
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label>Thumbnail</Label>
-                    <CustomInput type="file" onChange={this.onChangeHandler2} />
-                  </FormGroup>
-                </Col>
-
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label>Web Banner </Label>
-                    <CustomInput type="file" onChange={this.onChangeHandler3} />
-                  </FormGroup>
-                </Col>
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label>App Banner</Label>
-                    <CustomInput type="file" onChange={this.onChangeHandler4} />
-                  </FormGroup>
-                </Col>
-
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Feature</Label>
-                  <CustomInput
-                    type="select"
-                    placeholder="Select Type"
-                    name="feature"
-                    value={this.state.feature}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Feature</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </CustomInput>
-                </Col>
-
-                <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
-                  <Label className="mb-0">Status</Label>
-                  <div
-                    className="form-label-group"
-                    onChange={this.handleChange}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="status"
-                      value="Active"
+                    <Label style={{ marginBottom: "2px" }}>
+                      Warehouse Description
+                    </Label>
+                    <Input
+                      type="text"
+                      placeholder="Warehouse Description"
+                      name="category_name"
+                      value={this.state.category_name}
+                      onChange={this.changeHandler}
                     />
-                    <span style={{ marginRight: "20px" }}>Active</span>
-
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="status"
-                      value="Deactive"
-                    />
-                    <span style={{ marginRight: "3px" }}>Deactive</span>
-                  </div>
+                  </FormGroup>
                 </Col>
               </Row>
 
@@ -231,7 +166,7 @@ export class AddWarehouse extends Component {
                   type="submit"
                   className="mr-1 mb-1"
                 >
-                  Add Payroll
+                  Add WareHouse
                 </Button.Ripple>
               </Row>
             </Form>

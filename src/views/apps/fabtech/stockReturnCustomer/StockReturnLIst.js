@@ -13,7 +13,6 @@ import {
   Badge,
 } from "reactstrap";
 import axiosConfig from "../../../../axiosConfig";
-
 import { ContextLayout } from "../../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
 import { Edit, Trash2, ChevronDown, Eye } from "react-feather";
@@ -22,18 +21,24 @@ import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../../assets/scss/pages/users.scss";
 import { Route, Link } from "react-router-dom";
 
-class WareHouseList extends React.Component {
+class StockReturnList extends React.Component {
   state = {
+    name: "",
+    mobile: "",
+    email: "",
+    address: "",
+    delivery_zone: "",
+    status: "",
     rowData: [],
     paginationPageSize: 20,
     currenPageSize: "",
     getPageSize: "",
-    defaultColDef: {
-      sortable: true,
-      editable: true,
-      resizable: true,
-      suppressMenu: true,
-    },
+    // defaultColDef: {
+    //   sortable: true,
+    //   editable: true,
+    //   resizable: true,
+    //   suppressMenu: true,
+    // },
     columnDefs: [
       {
         headerName: "S.No",
@@ -42,98 +47,90 @@ class WareHouseList extends React.Component {
         width: 100,
         filter: true,
       },
-      // {
-      //   headerName: "Image",
-      //   field: "image",
-      //   filter: true,
-      //   width: 100,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <img
-      //           className="rounded-circle mr-50"
-      //           src={params.data?.image}
-      //           alt="user avatar"
-      //           height="40"
-      //           width="40"
-      //         />
-      //       </div>
-      //     );
-      //   },
-      // },
       {
-        headerName: "Name",
-        field: "category_name",
+        headerName: "Hub Name",
+        field: "name",
         filter: true,
-        width: 200,
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data?.category_name}</span> */}
-              <span>WareHouse Name</span>
+              <span>{params.data.name}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Description",
-        field: "category_name",
+        headerName: "Mobile No.",
+        field: "mobile",
         filter: true,
-        width: 550,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data?.category_name}</span> */}
-              <span>I am Warehouse Description</span>
+              <span>{params.data.mobile}</span>
             </div>
           );
         },
       },
-      // {
-      //   headerName: "Type",
-      //   field: "type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data?.type}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Featured",
-      //   field: "feature",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span className="" style={{ textTransform: "uppercase" }}>
-      //           {params.data?.feature}
-      //         </span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Status",
-      //   field: "status",
-      //   filter: true,
-      //   width: 100,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "Active" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.status}
-      //       </div>
-      //     ) : params.value === "Deactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.status}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+
+      {
+        headerName: "Email",
+        field: "email",
+        filter: true,
+        width: 100,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.email}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Address",
+        field: "address",
+        filter: true,
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.address}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Delivery Zone",
+        field: "delivery_zone",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.delivery_zone}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Status",
+        field: "status",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -144,29 +141,30 @@ class WareHouseList extends React.Component {
             <div className="actions cursor-pointer">
               <Route
                 render={({ history }) => (
-                  <>
-                    <Eye
-                      className="mr-50"
-                      size="25px"
-                      color="green"
-                      onClick={() =>
-                        history.push(
-                          `/app/freshlist/warehouse/viewWarehouse/${params.data._id}`
-                        )
-                      }
-                    />
-
-                    <Edit
-                      className="mr-50"
-                      size="25px"
-                      color="blue"
-                      onClick={() =>
-                        history.push(
-                          `/app/freshlist/warehouse/editWarehouse/${params.data._id}`
-                        )
-                      }
-                    />
-                  </>
+                  <Eye
+                    className="mr-50"
+                    size="25px"
+                    color="green"
+                    onClick={() =>
+                      history.push(
+                        `/app/freshlist/stock-returns/customer/ViewStockReturn/${params.data._id}`
+                      )
+                    }
+                  />
+                )}
+              />
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() =>
+                      history.push(
+                        `/app/freshlist/stock-returns/customer/EditStockReturn/${params.data._id}`
+                      )
+                    }
+                  />
                 )}
               />
               <Route
@@ -191,16 +189,15 @@ class WareHouseList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get("/admin/getallcategory").then((response) => {
+    await axiosConfig.get("admin/hublist").then((response) => {
       let rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
     });
   }
-
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.delete(`/admin/del_one_category/${id}`).then(
+    await axiosConfig.delete(`/admin/del_hub/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -209,6 +206,7 @@ class WareHouseList extends React.Component {
       }
     );
   }
+
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -242,37 +240,39 @@ class WareHouseList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    WareHouse List
+                    Stock Return List (Customer)
                   </h1>
+                </Col>
+                <Col>
+                  <Button
+                    style={{ marginRight: "-22rem" }}
+                    className="btn btn-danger float-right"
+                    onClick={() =>
+                      history.push(
+                        "/app/freshlist/stock-returns/customer/StockReturnList"
+                      )
+                    }
+                  >
+                    Back
+                  </Button>
                 </Col>
                 <Col>
                   <Route
                     render={({ history }) => (
                       <Button
-                        className="float-right"
+                        className="btn btn-primary float-right"
                         color="primary"
                         onClick={() =>
                           history.push(
-                            "/app/freshlist/warehouse/createWarehouse"
+                            "/app/freshlist/stock-returns/customer/AddStockReturn"
                           )
                         }
                       >
-                        Add New
+                        Add Stock Return
                       </Button>
                     )}
                   />
                 </Col>
-                {/* <Col>
-                  <Button
-                    style={{ marginRight: "-22rem" }}
-                    className="btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/freshlist/category/WareHouseList")
-                    }
-                  >
-                    Back
-                  </Button>
-                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -373,4 +373,4 @@ class WareHouseList extends React.Component {
     );
   }
 }
-export default WareHouseList;
+export default StockReturnList;
